@@ -4,6 +4,8 @@
 
 #include "SDL_SimpleApp.h"
 #include "SceneKinematicSeek.h"
+#include "SeekScene.h"
+#include "FleeScene.h"
 #include "SceneKinematicFlee.h"
 
 
@@ -16,7 +18,7 @@ int main(int argc, char ** argv)
 
 	SDL_SimpleApp *app = SDL_SimpleApp::Instance();
 
-	Scene *curr_scene = new SceneKinematicSeek;
+	Scene *curr_scene = new SeekScene;
 	app->setWindowTitle(curr_scene->getTitle());
 
 	while (!quit)
@@ -28,16 +30,28 @@ int main(int argc, char ** argv)
 		switch (event.type)
 		{
 		case SDL_KEYDOWN:
-			if (event.key.keysym.scancode == SDL_SCANCODE_1)
+			/*if (event.key.keysym.scancode == SDL_SCANCODE_8)
 			{
 				delete(curr_scene);
 				curr_scene = new SceneKinematicSeek;
 				app->setWindowTitle(curr_scene->getTitle());
 			}
-			if (event.key.keysym.scancode == SDL_SCANCODE_2)
+			if (event.key.keysym.scancode == SDL_SCANCODE_9)
 			{
 				delete(curr_scene);
 				curr_scene = new SceneKinematicFlee;
+				app->setWindowTitle(curr_scene->getTitle());
+			}*/
+			if (event.key.keysym.scancode == SDL_SCANCODE_1)
+			{
+				delete(curr_scene);
+				curr_scene = new SeekScene;
+				app->setWindowTitle(curr_scene->getTitle());
+			}
+			if (event.key.keysym.scancode == SDL_SCANCODE_2)
+			{
+				delete(curr_scene);
+				curr_scene = new FleeScene;
 				app->setWindowTitle(curr_scene->getTitle());
 			}
 			if ((event.key.keysym.scancode == SDL_SCANCODE_Q) || (event.key.keysym.scancode == SDL_SCANCODE_ESCAPE))

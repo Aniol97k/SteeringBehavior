@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{b8eff987-2089-4156-9364-4b1d68870cfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\Headers">
+      <UniqueIdentifier>{1a332eb2-8d6c-4cf8-a4f4-11910ed27294}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\Source">
+      <UniqueIdentifier>{f352d9ef-04c8-431c-8ef5-6b3ad889ad34}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -30,11 +39,20 @@
     <ClCompile Include="..\src\SteeringBehavior.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\SceneKinematicFlee.cpp">
+    <ClCompile Include="..\src\Image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\SceneKinematicFlee.cpp">
+      <Filter>Scenes\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\SceneKinematicSeek .cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Scenes\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\SeekScene.cpp">
+      <Filter>Scenes\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\FleeScene.cpp">
+      <Filter>Scenes\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -56,11 +74,20 @@
     <ClInclude Include="..\src\SteeringBehavior.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\SceneKinematicFlee.h">
+    <ClInclude Include="..\src\Image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\SceneKinematicFlee.h">
+      <Filter>Scenes\Headers</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\SceneKinematicSeek.h">
-      <Filter>Header Files</Filter>
+      <Filter>Scenes\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\FleeScene.h">
+      <Filter>Scenes\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SeekScene.h">
+      <Filter>Scenes\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
