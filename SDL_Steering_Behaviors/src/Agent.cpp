@@ -18,7 +18,13 @@ Agent::Agent() : sprite_texture(0),
 {
 	steering_behavior = new SteeringBehavior;
 	velocityLine.setColor(0, 190, 0);
-	steeringLine.setColor(190, 0, 0);
+	velocityLine.setOrigin(position);
+	velocityLine.setDestiny(position);
+
+	steeringLine.setColor(255, 0, 0);
+	steeringLine.setOrigin(position);
+	steeringLine.setDestiny(position);
+
 
 }
 
@@ -100,14 +106,14 @@ void Agent::draw(){
 		SDL_Rect dstrect = { (int)position.x - (sprite_w / 2), (int)position.y - (sprite_h / 2), sprite_w, sprite_h };
 		SDL_Point center = { sprite_w / 2, sprite_h / 2 };
 		SDL_RenderCopyEx(TheApp::Instance()->getRenderer(), sprite_texture, &srcrect, &dstrect, orientation+90, &center, SDL_FLIP_NONE);
-		velocityLine.drawVector();
-		steeringLine.drawVector();
 	}
 	else 
 	{
 		draw_circle(TheApp::Instance()->getRenderer(), (int)position.x, (int)position.y, 15, color.r, color.g, color.b, color.a);
 		SDL_RenderDrawLine(TheApp::Instance()->getRenderer(), (int)position.x, (int)position.y, (int)(position.x+15*cos(orientation*DEG2RAD)), (int)(position.y+15*sin(orientation*DEG2RAD)));
 	}
+	velocityLine.drawVector();
+	steeringLine.drawVector();
 }
 
 bool Agent::loadSpriteTexture(char* filename, int _num_frames){

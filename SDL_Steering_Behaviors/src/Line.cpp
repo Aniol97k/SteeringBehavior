@@ -19,6 +19,9 @@ Line::~Line() {}
 
 void Line::CalculateVectorArrows() {
 	Vector2D pointDifference = destiny - origin;
+	if (pointDifference.x == 0 && pointDifference.y == 0) {
+		pointDifference.x = 0.01f;
+	}
 	float arrowsAngle = 30;
 
 	float angle = atan(pointDifference.y / pointDifference.x);

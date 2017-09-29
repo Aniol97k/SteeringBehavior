@@ -12,6 +12,8 @@ ArriveScene::ArriveScene() {
 	target = Vector2D(640, 360);
 	text = new Image(Vector2D(TheApp::Instance()->getWinSize().x / 2, 100));
 	text->LoadImage("../res/Text/arriveDemo.png");
+
+	radius = 200;
 }
 
 ArriveScene::~ArriveScene() {
@@ -36,13 +38,14 @@ void ArriveScene::update(float dtime, SDL_Event *event) {
 	default:
 		break;
 	}
-	Vector2D steering_force = agents[0]->Behavior()->Arrive(agents[0], agents[0]->getTarget(), dtime);
+	Vector2D steering_force = agents[0]->Behavior()->Arrive(agents[0], agents[0]->getTarget(), radius, dtime);
 	agents[0]->update(steering_force, dtime, event);
 
 }
 
 void ArriveScene::draw() {
 	draw_circle(TheApp::Instance()->getRenderer(), (int)target.x, (int)target.y, 15, 255, 0, 0, 255);
+	draw_circle(TheApp::Instance()->getRenderer(), (int)target.x, (int)target.y, radius, 30, 150, 190, 255);
 	agents[0]->draw();
 	text->Draw();
 }

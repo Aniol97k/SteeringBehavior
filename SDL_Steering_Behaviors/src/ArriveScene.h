@@ -18,6 +18,7 @@ private:
 	std::vector<Agent*> agents;
 	Image* text;
 	Vector2D target;
+	int radius;
 };
 
 
