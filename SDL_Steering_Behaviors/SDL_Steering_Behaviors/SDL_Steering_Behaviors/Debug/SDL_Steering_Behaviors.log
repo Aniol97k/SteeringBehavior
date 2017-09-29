@@ -1,7 +1,2 @@
-﻿  Line.cpp
-c:\users\earnau\source\repos\steeringbehavior\sdl_steering_behaviors\src\line.cpp(42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\earnau\source\repos\steeringbehavior\sdl_steering_behaviors\src\line.cpp(46): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\earnau\source\repos\steeringbehavior\sdl_steering_behaviors\src\line.cpp(47): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\earnau\source\repos\steeringbehavior\sdl_steering_behaviors\src\line.cpp(48): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  SDL_Steering_Behaviors.vcxproj -> C:\Users\earnau\Source\Repos\SteeringBehavior\SDL_Steering_Behaviors\\bin\SDL_Steering_Behaviors.exe
+﻿  SDL_Steering_Behaviors.vcxproj -> C:\Users\earnau\Source\Repos\SteeringBehavior\SDL_Steering_Behaviors\\bin\SDL_Steering_Behaviors.exe
   SDL_Steering_Behaviors.vcxproj -> C:\Users\earnau\Source\Repos\SteeringBehavior\SDL_Steering_Behaviors\\bin\SDL_Steering_Behaviors.pdb (Partial PDB)

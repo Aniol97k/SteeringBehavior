@@ -16,7 +16,6 @@ public:
 	const char* getTitle();
 private:
 	std::vector<Agent*> agents;
-	Line* linea;
 	Image* text;
 	Vector2D target;
 };

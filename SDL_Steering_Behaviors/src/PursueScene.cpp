@@ -45,7 +45,7 @@ void PursueScene::update(float dtime, SDL_Event *event) {
 	Vector2D steering_force = agents[0]->Behavior()->Pursue(agents[0], agents[1], dtime);
 	agents[0]->update(steering_force, dtime, event);
 
-	Vector2D steering_force_enemy = agents[1]->Behavior()->Pursue(agents[1], agents[1]->getTarget(), dtime);
+	Vector2D steering_force_enemy = agents[1]->Behavior()->Seek(agents[1], agents[1]->getTarget(), dtime);
 	agents[1]->update(steering_force_enemy, dtime, event);
 }
 

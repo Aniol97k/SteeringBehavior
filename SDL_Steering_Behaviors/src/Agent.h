@@ -6,6 +6,7 @@
 #include "SDL_SimpleApp.h"
 #include "Vector2D.h"
 #include "utils.h"
+#include "Line.h"
 #include "SteeringBehavior.h"
 
 
@@ -18,6 +19,9 @@ private:
 	Vector2D position;
 	Vector2D velocity;
 	Vector2D target;
+
+	Line velocityLine;
+	Line steeringLine;
 
 	float mass;
 	float orientation;

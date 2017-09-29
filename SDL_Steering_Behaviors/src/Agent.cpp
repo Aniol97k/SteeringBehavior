@@ -17,6 +17,9 @@ Agent::Agent() : sprite_texture(0),
 	             draw_sprite(false)
 {
 	steering_behavior = new SteeringBehavior;
+	velocityLine.setColor(0, 190, 0);
+	steeringLine.setColor(190, 0, 0);
+
 }
 
 Agent::~Agent(){
@@ -59,7 +62,8 @@ void Agent::update(Vector2D steering_force, float dtime, SDL_Event *event){
 	default:
 		break;
 	}
-
+	steeringLine.setOrigin(position);
+	steeringLine.setDestiny(position + steering_force);
 
 	Vector2D acceleration = steering_force / mass;
 	velocity = velocity + acceleration * dtime;
@@ -77,6 +81,9 @@ void Agent::update(Vector2D steering_force, float dtime, SDL_Event *event){
 	if (position.y < 0) position.y = TheApp::Instance()->getWinSize().y;
 	if (position.x > TheApp::Instance()->getWinSize().x) position.x = 0;
 	if (position.y > TheApp::Instance()->getWinSize().y) position.y = 0;
+
+	velocityLine.setOrigin(position);
+	velocityLine.setDestiny(position + velocity);
 }
 
 void Agent::draw(){
@@ -93,6 +100,8 @@ void Agent::draw(){
 		SDL_Rect dstrect = { (int)position.x - (sprite_w / 2), (int)position.y - (sprite_h / 2), sprite_w, sprite_h };
 		SDL_Point center = { sprite_w / 2, sprite_h / 2 };
 		SDL_RenderCopyEx(TheApp::Instance()->getRenderer(), sprite_texture, &srcrect, &dstrect, orientation+90, &center, SDL_FLIP_NONE);
+		velocityLine.drawVector();
+		steeringLine.drawVector();
 	}
 	else 
 	{
