@@ -1,7 +1,7 @@
 #include "ArriveScene.h"
 
 using namespace std;
-//eis
+
 ArriveScene::ArriveScene() {
 	Agent *agent = new Agent;
 	agent->setPosition(Vector2D(640, 360));
@@ -10,7 +10,7 @@ ArriveScene::ArriveScene() {
 	agents.push_back(agent);
 	target = Vector2D(640, 360);
 	text = new Image(Vector2D(TheApp::Instance()->getWinSize().x / 2, 100));
-	text->LoadImage("../res/Text/fleeDemo.png");
+	text->LoadImage("../res/Text/arriveDemo.png");
 }
 
 ArriveScene::~ArriveScene() {

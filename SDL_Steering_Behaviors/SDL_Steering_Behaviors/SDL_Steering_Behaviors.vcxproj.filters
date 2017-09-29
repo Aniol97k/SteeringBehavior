@@ -54,10 +54,10 @@
     <ClCompile Include="..\src\FleeScene.cpp">
       <Filter>Scenes\Source</Filter>
     </ClCompile>
-    <ClCompile Include="ArriveScene.cpp">
+    <ClCompile Include="..\src\ArriveScene.cpp">
       <Filter>Scenes\Source</Filter>
     </ClCompile>
-    <ClCompile Include="PursueScene.cpp">
+    <ClCompile Include="..\src\PursueScene.cpp">
       <Filter>Scenes\Source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -95,10 +95,10 @@
     <ClInclude Include="..\src\SeekScene.h">
       <Filter>Scenes\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="ArriveScene.h">
+    <ClInclude Include="..\src\ArriveScene.h">
       <Filter>Scenes\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="PursueScene.h">
+    <ClInclude Include="..\src\PursueScene.h">
       <Filter>Scenes\Headers</Filter>
     </ClInclude>
   </ItemGroup>

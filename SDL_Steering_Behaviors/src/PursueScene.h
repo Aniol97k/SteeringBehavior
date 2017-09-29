@@ -3,7 +3,7 @@
 #include "Scene.h"
 #include "Agent.h"
 #include "Image.h"
-//eis
+
 class PursueScene :
 	public Scene
 {

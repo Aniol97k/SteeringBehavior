@@ -1,7 +1,7 @@
 #include "PursueScene.h"
 
 using namespace std;
-//eis
+
 PursueScene::PursueScene() {
 	Agent *agent = new Agent;
 	agent->setPosition(Vector2D(640, 360));
