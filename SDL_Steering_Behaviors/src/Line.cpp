@@ -19,14 +19,23 @@ Line::~Line() {}
 
 void Line::CalculateVectorArrows() {
 	Vector2D pointDifference = destiny - origin;
-	float angle = atan(pointDifference.y / pointDifference.x);
-	//if (angle > M_PI) {
-		vectorArrowRight.x = cos(angle - 60) * 20 + destiny.x;
-		vectorArrowRight.y = sin(angle - 60) * 20 + destiny.y;
+	float arrowsAngle = 30;
 
-		vectorArrowLeft.x = cos(angle + 60) * 20 + destiny.x;
-		vectorArrowLeft.y = sin(angle + 60) * 20 + destiny.y;
-	//}
+	float angle = atan(pointDifference.y / pointDifference.x);
+	if (destiny.x >= origin.x) {
+		vectorArrowRight.x = cos(angle - (180 - arrowsAngle) * DEG2RAD) * 20 + destiny.x;
+		vectorArrowRight.y = sin(angle - (180 - arrowsAngle) * DEG2RAD) * 20 + destiny.y;
+
+		vectorArrowLeft.x = cos(angle + (180 - arrowsAngle) * DEG2RAD) * 20 + destiny.x;
+		vectorArrowLeft.y = sin(angle + (180 - arrowsAngle) * DEG2RAD) * 20 + destiny.y;
+	}
+	else {
+		vectorArrowRight.x = cos(angle + arrowsAngle * DEG2RAD) * 20 + destiny.x;
+		vectorArrowRight.y = sin(angle + arrowsAngle * DEG2RAD) * 20 + destiny.y;
+
+		vectorArrowLeft.x = cos(angle - arrowsAngle * DEG2RAD) * 20 + destiny.x;
+		vectorArrowLeft.y = sin(angle - arrowsAngle * DEG2RAD) * 20 + destiny.y;
+	}
 }
 void Line::drawLine() {
 	SDL_SetRenderDrawColor(TheApp::Instance()->getRenderer(), red, green, blue, SDL_ALPHA_OPAQUE);

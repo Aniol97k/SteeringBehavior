@@ -7,6 +7,7 @@
 #include "SeekScene.h"
 #include "FleeScene.h"
 #include "ArriveScene.h"
+#include "PursueScene.h"
 #include "SceneKinematicFlee.h"
 
 
@@ -58,6 +59,12 @@ int main(int argc, char ** argv)
 				if (event.key.keysym.scancode == SDL_SCANCODE_3) {
 					delete(curr_scene);
 					curr_scene = new ArriveScene;
+					app->setWindowTitle(curr_scene->getTitle());
+				}
+
+				if (event.key.keysym.scancode == SDL_SCANCODE_4) {
+					delete(curr_scene);
+					curr_scene = new PursueScene;
 					app->setWindowTitle(curr_scene->getTitle());
 				}
 

@@ -13,6 +13,7 @@ ArriveScene::ArriveScene() {
 	text = new Image(Vector2D(TheApp::Instance()->getWinSize().x / 2, 100));
 	text->LoadImage("../res/Text/arriveDemo.png");
 	linea = new Line(Vector2D(20, 20), Vector2D(30, 300));
+	linea->setColor(0, 190, 0);
 }
 
 ArriveScene::~ArriveScene() {
@@ -42,7 +43,7 @@ void ArriveScene::update(float dtime, SDL_Event *event) {
 	agents[0]->update(steering_force, dtime, event);
 
 	linea->setOrigin(agents[0]->getPosition());
-	linea->setDestiny(target);
+	linea->setDestiny(agents[0]->getPosition() + agents[0]->getVelocity());
 }
 
 void ArriveScene::draw() {
