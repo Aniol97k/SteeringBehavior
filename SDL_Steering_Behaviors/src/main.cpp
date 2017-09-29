@@ -23,50 +23,46 @@ int main(int argc, char ** argv)
 
 	while (!quit)
 	{
-		// run app frame by frame
+		// Run app frame by frame
 		event = app->run(curr_scene);
 
-		/* Keyboard events */
-		switch (event.type)
-		{
-		case SDL_KEYDOWN:
-			/*if (event.key.keysym.scancode == SDL_SCANCODE_8)
-			{
-				delete(curr_scene);
-				curr_scene = new SceneKinematicSeek;
-				app->setWindowTitle(curr_scene->getTitle());
-			}
-			if (event.key.keysym.scancode == SDL_SCANCODE_9)
-			{
-				delete(curr_scene);
-				curr_scene = new SceneKinematicFlee;
-				app->setWindowTitle(curr_scene->getTitle());
-			}*/
-			if (event.key.keysym.scancode == SDL_SCANCODE_1)
-			{
-				delete(curr_scene);
-				curr_scene = new SeekScene;
-				app->setWindowTitle(curr_scene->getTitle());
-			}
-			if (event.key.keysym.scancode == SDL_SCANCODE_2)
-			{
-				delete(curr_scene);
-				curr_scene = new FleeScene;
-				app->setWindowTitle(curr_scene->getTitle());
-			}
-			if ((event.key.keysym.scancode == SDL_SCANCODE_Q) || (event.key.keysym.scancode == SDL_SCANCODE_ESCAPE))
-			{
+		// Keyboard events
+		switch (event.type){
+
+			case SDL_KEYDOWN:
+				if (event.key.keysym.scancode == SDL_SCANCODE_8){
+					delete(curr_scene);
+					curr_scene = new SceneKinematicSeek;
+					app->setWindowTitle(curr_scene->getTitle());
+				}
+
+				if (event.key.keysym.scancode == SDL_SCANCODE_9){
+					delete(curr_scene);
+					curr_scene = new SceneKinematicFlee;
+					app->setWindowTitle(curr_scene->getTitle());
+				}
+
+				if (event.key.keysym.scancode == SDL_SCANCODE_1){
+					delete(curr_scene);
+					curr_scene = new SeekScene;
+					app->setWindowTitle(curr_scene->getTitle());
+				}
+
+				if (event.key.keysym.scancode == SDL_SCANCODE_2){
+					delete(curr_scene);
+					curr_scene = new FleeScene;
+					app->setWindowTitle(curr_scene->getTitle());
+				}
+
+				if ((event.key.keysym.scancode == SDL_SCANCODE_Q) || (event.key.keysym.scancode == SDL_SCANCODE_ESCAPE)){quit = true;}
+
+				if (event.key.keysym.scancode == SDL_SCANCODE_F){app->setFullScreen();}
+
+				break;
+			case SDL_QUIT:
 				quit = true;
+				break;
 			}
-			if (event.key.keysym.scancode == SDL_SCANCODE_F)
-			{
-				app->setFullScreen();
-			}
-			break;
-		case SDL_QUIT:
-			quit = true;
-			break;
-		}
 
 	}
 

@@ -2,8 +2,7 @@
 
 using namespace std;
 
-SceneKinematicFlee::SceneKinematicFlee()
-{
+SceneKinematicFlee::SceneKinematicFlee(){
 	Agent *agent = new Agent;
 	agent->setPosition(Vector2D(640,360));
 	agent->setTarget(Vector2D(640, 360));
@@ -12,17 +11,15 @@ SceneKinematicFlee::SceneKinematicFlee()
 	target = Vector2D(640, 360);
 }
 
-SceneKinematicFlee::~SceneKinematicFlee()
-{
+SceneKinematicFlee::~SceneKinematicFlee(){
 	for (int i = 0; i < (int)agents.size(); i++)
 	{
 		delete agents[i];
 	}
-} ////
+} 
 
-void SceneKinematicFlee::update(float dtime, SDL_Event *event)
-{
-	/* Keyboard & Mouse events */
+void SceneKinematicFlee::update(float dtime, SDL_Event *event){
+	// Keyboard & Mouse events 
 	switch (event->type) {
 	case SDL_MOUSEMOTION:
 	case SDL_MOUSEBUTTONDOWN:
@@ -39,13 +36,11 @@ void SceneKinematicFlee::update(float dtime, SDL_Event *event)
 	agents[0]->update(steering_force, dtime, event);
 }
 
-void SceneKinematicFlee::draw()
-{
+void SceneKinematicFlee::draw(){
 	draw_circle(TheApp::Instance()->getRenderer(), (int)target.x, (int)target.y, 15, 255, 0, 0, 255);
 	agents[0]->draw();
 }
 
-const char* SceneKinematicFlee::getTitle()
-{
+const char* SceneKinematicFlee::getTitle(){
 	return "SDL Steering Behaviors :: KinematicFlee Demo";
 }

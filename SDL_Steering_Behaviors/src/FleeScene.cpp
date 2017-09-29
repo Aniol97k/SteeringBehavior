@@ -19,10 +19,10 @@ FleeScene::~FleeScene() {
 		delete agents[i];
 	}
 	delete text;
-} ////
+} 
 
 void FleeScene::update(float dtime, SDL_Event *event) {
-	/* Keyboard & Mouse events */
+	// Keyboard & Mouse events
 	switch (event->type) {
 	case SDL_MOUSEMOTION:
 	case SDL_MOUSEBUTTONDOWN:

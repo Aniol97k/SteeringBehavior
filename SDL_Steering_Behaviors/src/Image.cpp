@@ -26,15 +26,17 @@ bool Image::LoadImage(const std::string& path) {
 		SDL_FreeSurface(image);
 }
 void Image::Draw() {
-	/*int SDL_RenderCopyEx(SDL_Renderer*          renderer,
-	SDL_Texture*           texture,
-		const SDL_Rect*        srcrect,
-		const SDL_Rect*        dstrect,
-		const double           angle,
-		const SDL_Point*       center,
-		const SDL_RendererFlip flip)*/
+	
 	SDL_Rect rect = { 0, 0, width, height };
 	SDL_Rect drawRect = { (int)position.x - (width / 2), (int)position.y - (height / 2), width, height };
 
 	SDL_RenderCopyEx(TheApp::Instance()->getRenderer(), sprite_texture, &rect, &drawRect, 0, NULL, SDL_FLIP_NONE);
 }
+
+/*int SDL_RenderCopyEx(SDL_Renderer*          renderer,
+						SDL_Texture*           texture,
+						const SDL_Rect*        srcrect,
+						const SDL_Rect*        dstrect,
+						const double           angle,
+						const SDL_Point*       center,
+						const SDL_RendererFlip flip)*/

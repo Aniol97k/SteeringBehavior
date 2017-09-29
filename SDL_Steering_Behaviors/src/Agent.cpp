@@ -19,71 +19,39 @@ Agent::Agent() : sprite_texture(0),
 	steering_behavior = new SteeringBehavior;
 }
 
-Agent::~Agent()
-{
+Agent::~Agent(){
 	if (sprite_texture)
 		SDL_DestroyTexture(sprite_texture);
 	if (steering_behavior)
 		delete (steering_behavior);
 }
 
-SteeringBehavior * Agent::Behavior()
-{
-	return steering_behavior;
-}
+SteeringBehavior * Agent::Behavior(){	return steering_behavior;}
 
-Vector2D Agent::getPosition()
-{
-	return position;
-}
+Vector2D Agent::getPosition(){	return position;}
 
-Vector2D Agent::getTarget()
-{
-	return target;
-}
+Vector2D Agent::getTarget(){	return target;}
 
-Vector2D Agent::getVelocity()
-{
-	return velocity;
-}
+Vector2D Agent::getVelocity(){	return velocity;}
 
-float Agent::getMaxVelocity()
-{
-	return max_velocity;
-}
+float Agent::getMaxVelocity(){	return max_velocity;}
 
-void Agent::setPosition(Vector2D _position)
-{
-	position = _position;
-}
+void Agent::setPosition(Vector2D _position){	position = _position;}
 
-void Agent::setTarget(Vector2D _target)
-{
-	target = _target;
-}
+void Agent::setTarget(Vector2D _target){	target = _target;}
 
-void Agent::setVelocity(Vector2D _velocity)
-{
-	velocity = _velocity;
-}
+void Agent::setVelocity(Vector2D _velocity){	velocity = _velocity;}
 
-void Agent::setMass(float _mass)
-{
-	mass = _mass;
-}
+void Agent::setMass(float _mass){	mass = _mass;}
 
-void Agent::setColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
-{
-	color = { r, g, b, a };
-}
+void Agent::setColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a){	color = { r, g, b, a };}
 
-void Agent::update(Vector2D steering_force, float dtime, SDL_Event *event)
-{
+void Agent::update(Vector2D steering_force, float dtime, SDL_Event *event){
 
 	//cout << "agent update:" << endl;
 
 	switch (event->type) {
-		/* Keyboard & Mouse events */
+		// Keyboard & Mouse events
 	case SDL_KEYDOWN:
 		if (event->key.keysym.scancode == SDL_SCANCODE_SPACE)
 			draw_sprite = !draw_sprite;
@@ -111,8 +79,7 @@ void Agent::update(Vector2D steering_force, float dtime, SDL_Event *event)
 	if (position.y > TheApp::Instance()->getWinSize().y) position.y = 0;
 }
 
-void Agent::draw()
-{
+void Agent::draw(){
 	if (draw_sprite)
 	{
 		Uint32 sprite;
@@ -134,8 +101,7 @@ void Agent::draw()
 	}
 }
 
-bool Agent::loadSpriteTexture(char* filename, int _num_frames)
-{
+bool Agent::loadSpriteTexture(char* filename, int _num_frames){
 	if (_num_frames < 1) return false;
 
 	SDL_Surface *image = IMG_Load(filename);
@@ -143,6 +109,7 @@ bool Agent::loadSpriteTexture(char* filename, int _num_frames)
 		cout << "IMG_Load: " << IMG_GetError() << endl;
 		return false;
 	}
+
 	sprite_texture = SDL_CreateTextureFromSurface(TheApp::Instance()->getRenderer(), image);
 
 	sprite_num_frames = _num_frames;
