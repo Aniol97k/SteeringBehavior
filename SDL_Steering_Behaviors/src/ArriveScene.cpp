@@ -1,7 +1,7 @@
 #include "ArriveScene.h"
 
 using namespace std;
-//eis
+
 ArriveScene::ArriveScene() {
 	Agent *agent = new Agent;
 	agent->setPosition(Vector2D(640, 360));
@@ -10,7 +10,7 @@ ArriveScene::ArriveScene() {
 	agents.push_back(agent);
 	target = Vector2D(640, 360);
 	text = new Image(Vector2D(TheApp::Instance()->getWinSize().x / 2, 100));
-	text->LoadImage("../res/Text/fleeDemo.png");
+	text->LoadImage("../res/Text/arriveDemo.png");
 }
 
 ArriveScene::~ArriveScene() {
@@ -35,7 +35,7 @@ void ArriveScene::update(float dtime, SDL_Event *event) {
 	default:
 		break;
 	}
-	Vector2D steering_force = agents[0]->Behavior()->Flee(agents[0], agents[0]->getTarget(), dtime);
+	Vector2D steering_force = agents[0]->Behavior()->Arrive(agents[0], agents[0]->getTarget(), dtime);
 	agents[0]->update(steering_force, dtime, event);
 }
 
@@ -46,5 +46,5 @@ void ArriveScene::draw() {
 }
 
 const char* ArriveScene::getTitle() {
-	return "SDL Steering Behaviors :: Flee Demo";
+	return "SDL Steering Behaviors :: Arrive Demo";
 }
