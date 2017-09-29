@@ -3,6 +3,7 @@
 #include "Scene.h"
 #include "Agent.h"
 #include "Image.h"
+#include "Line.h"
 
 class ArriveScene :
 	public Scene
@@ -15,6 +16,7 @@ public:
 	const char* getTitle();
 private:
 	std::vector<Agent*> agents;
+	Line* linea;
 	Image* text;
 	Vector2D target;
 };

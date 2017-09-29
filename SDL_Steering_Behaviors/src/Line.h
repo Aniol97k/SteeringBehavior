@@ -26,7 +26,7 @@ public:
 	inline Vector2D setOrigin(const Vector2D& value) { origin = value; CalculateVectorArrows(); }
 	inline Vector2D setDestiny(const Vector2D& value) { destiny = value; CalculateVectorArrows(); }
 
-	inline int setColor(const int& r, const int& g, const int& b) { 
+	inline void setColor(const int& r, const int& g, const int& b) { 
 		if(!(r > 255 && r < 0 && g > 255 && g < 0 && b > 255 && b < 0))		
 		red = r; green = g; blue = b;
 	}

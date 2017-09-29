@@ -61,7 +61,7 @@
       <Filter>Scenes\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Line.cpp">
-      <Filter>Scenes\Source</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -98,14 +98,14 @@
     <ClInclude Include="..\src\SeekScene.h">
       <Filter>Scenes\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\PursueScene.h">
-      <Filter>Scenes\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\ArriveScene.h">
       <Filter>Scenes\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\Line.h">
+    <ClInclude Include="..\src\PursueScene.h">
       <Filter>Scenes\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Line.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

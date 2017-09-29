@@ -12,7 +12,9 @@ Line::Line(const Vector2D& orig, const Vector2D& dest) :
 {
 	CalculateVectorArrows();
 }
+
 Line::~Line() {}
+
 void Line::CalculateVectorArrows() {
 	Vector2D pointDifference = destiny - origin;
 	float angle = atan(pointDifference.x / pointDifference.y);

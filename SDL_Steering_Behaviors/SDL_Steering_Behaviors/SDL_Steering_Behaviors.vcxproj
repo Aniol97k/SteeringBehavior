@@ -134,6 +134,7 @@
     <ClCompile Include="..\src\ArriveScene.cpp" />
     <ClCompile Include="..\src\FleeScene.cpp" />
     <ClCompile Include="..\src\Image.cpp" />
+    <ClCompile Include="..\src\Line.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\PursueScene.cpp" />
     <ClCompile Include="..\src\SceneKinematicFlee.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="..\src\ArriveScene.h" />
     <ClInclude Include="..\src\FleeScene.h" />
     <ClInclude Include="..\src\Image.h" />
+    <ClInclude Include="..\src\Line.h" />
     <ClInclude Include="..\src\PursueScene.h" />
     <ClInclude Include="..\src\SceneKinematicFlee.h" />
     <ClInclude Include="..\src\SceneKinematicSeek.h" />
