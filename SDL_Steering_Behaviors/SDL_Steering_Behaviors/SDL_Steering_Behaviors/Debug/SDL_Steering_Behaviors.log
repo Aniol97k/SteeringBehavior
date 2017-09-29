@@ -1,13 +1,1 @@
-﻿  main.cpp
-  SteeringBehavior.cpp
-  SeekScene.cpp
-  SDL_SimpleApp.cpp
-  Image.cpp
-c:\users\aniol\source\repos\steeringbehavior\sdl_steering_behaviors\src\image.cpp(30): warning C4838: conversion from 'Uint32' to 'int' requires a narrowing conversion
-c:\users\aniol\source\repos\steeringbehavior\sdl_steering_behaviors\src\image.cpp(31): warning C4838: conversion from 'Uint32' to 'int' requires a narrowing conversion
-  FleeScene.cpp
-  Agent.cpp
-  Generating Code...
-c:\users\aniol\source\repos\steeringbehavior\sdl_steering_behaviors\src\image.cpp(27): warning C4715: 'Image::LoadImage': not all control paths return a value
-  SDL_Steering_Behaviors.vcxproj -> C:\Users\Aniol\Source\Repos\SteeringBehavior\SDL_Steering_Behaviors\\bin\SDL_Steering_Behaviors.exe
-  SDL_Steering_Behaviors.vcxproj -> C:\Users\Aniol\Source\Repos\SteeringBehavior\SDL_Steering_Behaviors\\bin\SDL_Steering_Behaviors.pdb (Partial PDB)
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.Cpp.Platform.targets(57,5): error MSB8020: The build tools for v141 (Platform Toolset = 'v141') cannot be found. To build using the v141 build tools, please install v141 build tools.  Alternatively, you may upgrade to the current Visual Studio tools by selecting the Project menu or right-click the solution, and then selecting "Retarget solution".
