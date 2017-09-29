@@ -12,8 +12,7 @@ ArriveScene::ArriveScene() {
 	target = Vector2D(640, 360);
 	text = new Image(Vector2D(TheApp::Instance()->getWinSize().x / 2, 100));
 	text->LoadImage("../res/Text/arriveDemo.png");
-	linea = new Line((20, 20), (300, 300));
-	linea->setColor(200, 200, 200);
+	linea = new Line(Vector2D(20, 20), Vector2D(30, 300));
 }
 
 ArriveScene::~ArriveScene() {
@@ -41,11 +40,14 @@ void ArriveScene::update(float dtime, SDL_Event *event) {
 	}
 	Vector2D steering_force = agents[0]->Behavior()->Arrive(agents[0], agents[0]->getTarget(), dtime);
 	agents[0]->update(steering_force, dtime, event);
+
+	linea->setOrigin(agents[0]->getPosition());
+	linea->setDestiny(target);
 }
 
 void ArriveScene::draw() {
 	draw_circle(TheApp::Instance()->getRenderer(), (int)target.x, (int)target.y, 15, 255, 0, 0, 255);
-	linea->drawLine();
+	linea->drawVector();
 	agents[0]->draw();
 	text->Draw();
 }

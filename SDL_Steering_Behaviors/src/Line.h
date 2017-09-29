@@ -23,12 +23,12 @@ public:
 	inline Vector2D getOrigin() { return origin; }
 	inline Vector2D getDestiny() { return destiny; }
 
-	inline Vector2D setOrigin(const Vector2D& value) { origin = value; CalculateVectorArrows(); }
-	inline Vector2D setDestiny(const Vector2D& value) { destiny = value; CalculateVectorArrows(); }
+	inline void setOrigin(const Vector2D& value) { origin = value; CalculateVectorArrows(); }
+	inline void setDestiny(const Vector2D& value) { destiny = value; CalculateVectorArrows(); }
 
 	inline void setColor(const int& r, const int& g, const int& b) { 
-		if(!(r > 255 && r < 0 && g > 255 && g < 0 && b > 255 && b < 0))		
-		red = r; green = g; blue = b;
+		if(!(r > 255 || r < 0 || g > 255 || g < 0 || b > 255 || b < 0))		
+			red = r; green = g; blue = b;
 	}
 };
 	
