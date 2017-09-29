@@ -11,7 +11,7 @@ PursueScene::PursueScene() {
 
 	Agent *enemy = new Agent;
 	enemy->setPosition(Vector2D(TheApp::Instance()->getWinSize().x - 100, TheApp::Instance()->getWinSize().y - 100));
-	enemy->setTarget(enemy->getPosition());
+	enemy->setTarget(agent->getPosition());
 	agent->loadSpriteTexture("../res/zombie1.png", 8);
 	agents.push_back(enemy);
 
@@ -36,16 +36,16 @@ void PursueScene::update(float dtime, SDL_Event *event) {
 		if (event->button.button == SDL_BUTTON_LEFT)
 		{
 			target = Vector2D((float)(event->button.x), (float)(event->button.y));
-			agents[1]->setTarget(target);
+			agents[0]->setTarget(target);
 		}
 		break;
 	default:
 		break;
 	}
-	Vector2D steering_force = agents[0]->Behavior()->Pursue(agents[0], agents[1], dtime);
+	Vector2D steering_force = agents[0]->Behavior()->Seek(agents[0], agents[0]->getTarget(), dtime);
 	agents[0]->update(steering_force, dtime, event);
 
-	Vector2D steering_force_enemy = agents[1]->Behavior()->Pursue(agents[1], agents[1]->getTarget(), dtime);
+	Vector2D steering_force_enemy = agents[1]->Behavior()->Pursue(agents[1], agents[0], dtime);
 	agents[1]->update(steering_force_enemy, dtime, event);
 }
 

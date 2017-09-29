@@ -83,9 +83,18 @@ Vector2D SteeringBehavior::Arrive(Agent *agent, Agent *target, float dtime){
 }
 
 //Pursue behaviour
-Vector2D SteeringBehavior::Pursue(Agent *agent, Vector2D target, float dtime){
-	//Vector2D predictedTarget = target + targetV * (distanceToTarget / velocity);
-	Vector2D desiredVelocity = target - agent->getPosition();
+Vector2D SteeringBehavior::Pursue(Agent *agent, Vector2D target, Vector2D targetV, float dtime){
+
+	if (targetV.Length() == 0) {
+		targetV.x = 0.01f;
+	}
+
+	float distanceToTarget = Vector2D(target - agent->getPosition()).Length();
+	float T = distanceToTarget / targetV.Length();
+
+	Vector2D predictedTarget = target + targetV * T;
+
+	Vector2D desiredVelocity = predictedTarget - agent->getPosition();
 	desiredVelocity = desiredVelocity.Normalize();
 	desiredVelocity *= agent->max_velocity;
 
@@ -97,7 +106,7 @@ Vector2D SteeringBehavior::Pursue(Agent *agent, Vector2D target, float dtime){
 }
 
 Vector2D SteeringBehavior::Pursue(Agent *agent, Agent *target, float dtime){
-	return Pursue(agent, target->position, dtime);
+	return Pursue(agent, target->position, target->velocity, dtime);
 }
 
 //Evade behaviour
