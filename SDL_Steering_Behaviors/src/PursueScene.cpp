@@ -5,17 +5,18 @@ using namespace std;
 PursueScene::PursueScene() {
 	Agent *agent = new Agent;
 	agent->setPosition(Vector2D(640, 360));
-	agent->setTarget(Vector2D(640, 360));
+	agent->setTarget(Vector2D(1000, 30));
 	agent->loadSpriteTexture("../res/soldier.png", 4);
 	agents.push_back(agent);
 
 	Agent *enemy = new Agent;
 	enemy->setPosition(Vector2D(TheApp::Instance()->getWinSize().x - 100, TheApp::Instance()->getWinSize().y - 100));
 	enemy->setTarget(agent->getPosition());
+	enemy->setMaxVelocity(enemy->getMaxVelocity() * 0.75);
 	enemy->loadSpriteTexture("../res/zombie1.png", 8);
 	agents.push_back(enemy);
 
-	target = Vector2D(640, 360);
+	target = Vector2D(1000, 30);
 	predictedTarget = agent->getPosition();
 	text = new Image(Vector2D(TheApp::Instance()->getWinSize().x / 2, 100));
 	text->LoadImage("../res/Text/pursueDemo.png");

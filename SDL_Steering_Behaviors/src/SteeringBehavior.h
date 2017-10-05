@@ -9,6 +9,10 @@ class SteeringBehavior
 public:
 	SteeringBehavior();
 	~SteeringBehavior();
+
+	inline float RandomBinomial() { return ((float)rand() / (RAND_MAX)) - ((float)rand() / (RAND_MAX)); };
+	float AngleSmooth(float);
+
 	Vector2D KinematicSeek(Agent *agent, Vector2D target, float dtime);
 	Vector2D KinematicSeek(Agent *agent, Agent *target, float dtime);
 	Vector2D KinematicFlee(Agent *agent, Vector2D target, float dtime);
@@ -29,7 +33,7 @@ public:
 	Vector2D Evade(Agent *agent, Vector2D target, float dtime);
 	Vector2D Evade(Agent *agent, Agent *target, float dtime);
 
-	Vector2D Wander(Agent *agent, Vector2D target, float dtime);
-	Vector2D Wander(Agent *agent, Agent *target, float dtime);
+	Vector2D Wander(Agent *agent, Vector2D target, float dtime, float wanderMaxAngleChange, float wanderRadius);
+	Vector2D Wander(Agent *agent, Agent *target, float dtime, float wanderMaxAngleChange, float wanderRadius);
 
 };

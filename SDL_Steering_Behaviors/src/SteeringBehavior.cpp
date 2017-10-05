@@ -122,11 +122,36 @@ Vector2D SteeringBehavior::Evade(Agent *agent, Agent *target, float dtime){
 }
 
 //Wander behaviour
-Vector2D SteeringBehavior::Wander(Agent *agent, Vector2D target, float dtime){
-	return Vector2D(0, 0);
+Vector2D SteeringBehavior::Wander(Agent *agent, Vector2D target, float dtime, float wanderMaxAngleChange, float wanderRadius){
+	float wanderAngle = 0.01;
+	float targetAngle;
+	float wanderOffset = (target - agent->position).Length();
+	//Calculate the angle
+	float angle = AngleSmooth(atan2f(agent->velocity.x, agent->velocity.y));
+	float distance = (agent->position - target).Length();
+	
+	wanderAngle += RandomBinomial() * wanderMaxAngleChange;
+	targetAngle = angle + wanderAngle;
+
+	Vector2D circleCenter = agent->position + agent->velocity * wanderOffset;
+	Vector2D newTarget(circleCenter.x * wanderRadius * cos(targetAngle), circleCenter.y * wanderRadius * sin(targetAngle));
+
+	return Seek(agent, newTarget, dtime);
+	
 }
 
-Vector2D SteeringBehavior::Wander(Agent *agent, Agent *target, float dtime){
-	return Wander(agent, target->position, dtime);
+Vector2D SteeringBehavior::Wander(Agent *agent, Agent *target, float dtime, float wanderMaxAngleChange, float wanderRadius){
+	return Wander(agent, target->position, dtime, wanderMaxAngleChange, wanderRadius);
+}
+float SteeringBehavior::AngleSmooth(float angle) {
+	float angleToUpdate = angle;
+	float angleDelta = angleToUpdate - angle;
+	if (angleDelta > 180.f) {
+		angle += 360;
+	}
+	else if (angleDelta < -180.f) {
+		angle -= 360.f;
+	}
+	return (angle + angleToUpdate * 0.1f);
 }
 

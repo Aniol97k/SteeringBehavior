@@ -63,6 +63,9 @@
     <ClCompile Include="..\src\Line.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\WanderScene.cpp">
+      <Filter>Scenes\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\SDL_SimpleApp.h">
@@ -106,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="..\src\Line.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\WanderScene.h">
+      <Filter>Scenes\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
