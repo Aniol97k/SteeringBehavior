@@ -11,6 +11,7 @@
 #include "WanderScene.h"
 #include "PathFollowingScene.h"
 #include "SceneKinematicFlee.h"
+#include "AdvancedPathFollowingScene.h"
 
 
 using namespace std; 
@@ -79,6 +80,12 @@ int main(int argc, char ** argv)
 				if (event.key.keysym.scancode == SDL_SCANCODE_6) {
 					delete(curr_scene);
 					curr_scene = new PathFollowingScene;
+					app->setWindowTitle(curr_scene->getTitle());
+				}
+
+				if (event.key.keysym.scancode == SDL_SCANCODE_7) {
+					delete(curr_scene);
+					curr_scene = new AdvancedPathFollowingScene;
 					app->setWindowTitle(curr_scene->getTitle());
 				}
 

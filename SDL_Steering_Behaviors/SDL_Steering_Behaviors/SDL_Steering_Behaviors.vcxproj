@@ -130,6 +130,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\AdvancedPathFollowingScene.cpp" />
     <ClCompile Include="..\src\Agent.cpp" />
     <ClCompile Include="..\src\ArriveScene.cpp" />
     <ClCompile Include="..\src\FleeScene.cpp" />
@@ -147,6 +148,7 @@
     <ClCompile Include="..\src\WanderScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\AdvancedPathFollowingScene.h" />
     <ClInclude Include="..\src\Agent.h" />
     <ClInclude Include="..\src\ArriveScene.h" />
     <ClInclude Include="..\src\FleeScene.h" />

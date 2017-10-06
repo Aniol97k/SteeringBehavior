@@ -28,23 +28,38 @@ void PathFollowingScene::update(float dtime, SDL_Event *event) {
 	case SDL_MOUSEBUTTONDOWN:
 		if (event->button.button == SDL_BUTTON_LEFT)
 		{
-			target = Vector2D((float)(event->button.x), (float)(event->button.y));
-			agents[0]->setTarget(target);
+			path.emplace(Vector2D((float)(event->button.x), (float)(event->button.y)));
 		}
 		break;
 	default:
 		break;
 	}
-	Vector2D steering_force = agents[0]->Behavior()->Seek(agents[0], agents[0]->getTarget(), dtime);
+	Vector2D steering_force = agents[0]->Behavior()->PathFollowing(agents[0], agents[0]->getTarget(), dtime, &path);
 	agents[0]->update(steering_force, dtime, event);
 }
 
 void PathFollowingScene::draw() {
-	draw_circle(TheApp::Instance()->getRenderer(), (int)target.x, (int)target.y, 15, 255, 0, 0, 255);
+	
+	std::queue<Vector2D> drawPath = path;
+	Line line;
+	for (int i = 0; i < path.size(); i++) {
+		if (drawPath.size() != 1) {
+			line.setOrigin(drawPath.front());
+			draw_circle(TheApp::Instance()->getRenderer(), (int)drawPath.front().x, (int)drawPath.front().y, 10, 255, 0, 0, 255);
+			drawPath.pop();
+			line.setDestiny(drawPath.front());
+			line.drawLine();
+		}
+		else {
+			draw_circle(TheApp::Instance()->getRenderer(), (int)drawPath.front().x, (int)drawPath.front().y, 10, 255, 0, 0, 255);
+			drawPath.pop();
+		}
+	}
 	agents[0]->draw();
 	text->Draw();
 }
 
 const char* PathFollowingScene::getTitle() {
-	return "SDL Steering Behaviors :: Seek Demo";
+	return "SDL Steering Behaviors :: Simple Path Finding Demo";
 }
+

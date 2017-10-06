@@ -69,6 +69,9 @@
     <ClCompile Include="..\src\PathFollowingScene.cpp">
       <Filter>Scenes\Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\AdvancedPathFollowingScene.cpp">
+      <Filter>Scenes\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\SDL_SimpleApp.h">
@@ -117,6 +120,9 @@
       <Filter>Scenes\Headers</Filter>
     </ClInclude>
     <ClInclude Include="..\src\PathFollowingScene.h">
+      <Filter>Scenes\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\AdvancedPathFollowingScene.h">
       <Filter>Scenes\Headers</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,20 +1,21 @@
 #pragma once
+
 #include <vector>
 #include "Scene.h"
 #include "Agent.h"
 #include "Image.h"
-#include <queue>
+#include <vector>
 
-class PathFollowingScene :
+class AdvancedPathFollowingScene :
 	public Scene
 {
 public:
-	PathFollowingScene();
-	~PathFollowingScene();
+	AdvancedPathFollowingScene();
+	~AdvancedPathFollowingScene();
 	void update(float dtime, SDL_Event *event);
 	void draw();
 	const char* getTitle();
-	std::queue<Vector2D> path;
+	std::vector<Vector2D> path;
 private:
 	std::vector<Agent*> agents;
 	Image* text;

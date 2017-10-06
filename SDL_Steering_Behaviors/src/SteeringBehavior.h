@@ -1,6 +1,7 @@
 #pragma once
 #include "Agent.h"
 #include "Vector2D.h"
+#include <queue>
 
 class Agent;
 
@@ -44,7 +45,10 @@ public:
 	Vector2D Wander(Agent *agent, Vector2D target, float dtime, float wanderMaxAngleChange, float wanderOffset, float wanderRadius, Vector2D* circle, Vector2D* newT);
 	Vector2D Wander(Agent *agent, Agent *target, float dtime, float wanderMaxAngleChange, float wanderOffset, float wanderRadius, Vector2D* circle, Vector2D* newT);
 
-	Vector2D PathFollowing(Agent *agent, Vector2D target, float dtime, Vector2D path[], int currentIndex);
-	Vector2D PathFollowing(Agent *agent, Agent *target, float dtime);
+	Vector2D PathFollowing(Agent *agent, Vector2D target, float dtime, std::queue<Vector2D>* path);
+	Vector2D PathFollowing(Agent *agent, Agent *target, float dtime, std::queue<Vector2D>* path);
+
+	Vector2D AdvancedPathFollowing(Agent *agent, Vector2D target, float dtime, std::vector<Vector2D>* path);
+	Vector2D AdvancedPathFollowing(Agent *agent, Agent *target, float dtime, std::vector<Vector2D>* path);
 
 };

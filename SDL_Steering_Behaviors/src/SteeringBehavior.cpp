@@ -1,6 +1,6 @@
 #include "SteeringBehavior.h"
 
-int ARRIVAL_DISTANCE = 5;
+float ARRIVAL_DISTANCE = 20;
 
 
 SteeringBehavior::SteeringBehavior() : time(1), wanderUpdateTime(1){}
@@ -146,22 +146,7 @@ Vector2D SteeringBehavior::Wander(Agent *agent, Vector2D target, float dtime, fl
 
 }
 
-
-//Path Following behaviour
-Vector2D SteeringBehavior::PathFollowing(Agent *agent, Vector2D target, float dtime, Vector2D path[], int currentIndex) {
-	Vector2D desiredVelocity = path[currentIndex] - agent->getPosition();
-	desiredVelocity = desiredVelocity.Normalize();
-	desiredVelocity *= agent->max_velocity;
-
-	Vector2D steeringForce = desiredVelocity - agent->getVelocity();
-	steeringForce /= agent->max_velocity;
-	steeringForce *= agent->max_force;
-
-	if ((agent->position - path[currentIndex]).Length() < ARRIVAL_DISTANCE) { currentIndex += 1; }
-	return steeringForce;
-}
-
-Vector2D SteeringBehavior::Wander(Agent *agent, Agent *target, float dtime, float wanderMaxAngleChange, float wanderOffset, float wanderRadius, Vector2D* circle, Vector2D* newT){
+Vector2D SteeringBehavior::Wander(Agent *agent, Agent *target, float dtime, float wanderMaxAngleChange, float wanderOffset, float wanderRadius, Vector2D* circle, Vector2D* newT) {
 	return Wander(agent, target->position, dtime, wanderMaxAngleChange, wanderOffset, wanderRadius, circle, newT);
 }
 
@@ -177,6 +162,74 @@ float SteeringBehavior::AngleSmooth(float angle) {
 	return (angle + angleToUpdate * 0.1f);
 }
 
-Vector2D SteeringBehavior::PathFollowing(Agent *agent, Agent *target, float dtime) {
-	return Seek(agent, target->position, dtime);
+//Path Following behaviour
+Vector2D SteeringBehavior::PathFollowing(Agent *agent, Vector2D target, float dtime, std::queue<Vector2D>* path) {
+
+	Vector2D steeringForce(0, 0);
+	
+	if (path->size() == 1) {
+		steeringForce = Arrive(agent, path->front(), 25, dtime);
+		if ((agent->position - path->front()).Length() <= ARRIVAL_DISTANCE) {
+			path->pop();
+		}
+	}
+	else if (!path->empty()) {
+		steeringForce = Seek(agent, path->front(), dtime);
+		if ((agent->position - path->front()).Length() <= ARRIVAL_DISTANCE) {
+			path->pop();
+		}
+	}
+	else {
+		steeringForce = agent->getVelocity() * -0.5f;
+	}
+	return steeringForce;
 }
+
+
+
+Vector2D SteeringBehavior::PathFollowing(Agent *agent, Agent *target, float dtime, std::queue<Vector2D>* path) {
+	return PathFollowing(agent, target->position, dtime, path);
+}
+
+Vector2D SteeringBehavior::AdvancedPathFollowing(Agent *agent, Vector2D target, float dtime, std::vector<Vector2D>* path) {
+
+	Vector2D steeringForce(0, 0);
+
+	if (path->size() == 1) {
+		steeringForce = Arrive(agent, *path->begin(), 25, dtime);
+		if ((agent->position - *path->begin()).Length() <= ARRIVAL_DISTANCE) {
+			
+			int position = 0;
+			for (int i = 0; i < path->size(); i++) {
+				if ((agent->getPosition() - path->at(i)).Length() < (agent->getPosition() - path->at(i)).Length()) {
+					position = i;
+				}
+				path->erase(path->begin(), path->begin() + position - 1);
+			}
+		}
+	}
+	else if (!path->empty()) {
+		steeringForce = Seek(agent, *path->begin(), dtime);
+		if ((agent->position - *path->begin()).Length() <= ARRIVAL_DISTANCE) {
+			//path->pop();
+			int position = 0;
+			for (int i = 0; i < path->size(); i++) {
+				if ((agent->getPosition() - path->at(i)).Length() < (agent->getPosition() - path->at(i)).Length()) {
+					position = i;
+				}
+				path->erase(path->begin(), path->begin() + position - 1);
+			}
+		}
+	}
+	else {
+		steeringForce = agent->getVelocity() * -0.5f;
+	}
+	return steeringForce;
+}
+
+
+
+Vector2D SteeringBehavior::AdvancedPathFollowing(Agent *agent, Agent *target, float dtime, std::vector<Vector2D>* path) {
+	return AdvancedPathFollowing(agent, target->position, dtime, path);
+}
+
