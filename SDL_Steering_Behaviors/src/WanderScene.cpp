@@ -11,8 +11,9 @@ WanderScene::WanderScene() {
 	target = Vector2D(640, 360);
 	text = new Image(Vector2D(TheApp::Instance()->getWinSize().x / 2, 100));
 	text->LoadImage("../res/Text/wanderDemo.png");
-	wanderMaxAngleDiff = 45.f;
-	wanderRadius = 200.f;
+	wanderMaxAngleDiff = 180.f;
+	wanderRadius = 75.f;
+	wanderOffset = 200.f;
 }
 
 WanderScene::~WanderScene() {
@@ -37,13 +38,14 @@ void WanderScene::update(float dtime, SDL_Event *event) {
 	default:
 		break;
 	}
-	Vector2D steering_force = agents[0]->Behavior()->Wander(agents[0], agents[0]->getTarget(), dtime, wanderMaxAngleDiff, wanderRadius);
+	Vector2D steering_force = agents[0]->Behavior()->Wander(agents[0], agents[0]->getTarget(), dtime, wanderMaxAngleDiff, wanderOffset, wanderRadius, &circleCenter, &newTarget);
 	agents[0]->update(steering_force, dtime, event);
 }
 
 void WanderScene::draw() {
-	draw_circle(TheApp::Instance()->getRenderer(), (int)target.x, (int)target.y, 15, 255, 0, 0, 255);
-	draw_circle(TheApp::Instance()->getRenderer(), (int)target.x, (int)target.y, wanderRadius, 30, 150, 190, 255);
+	draw_circle(TheApp::Instance()->getRenderer(), (int)newTarget.x, (int)newTarget.y, 15, 255, 0, 0, 255);
+	draw_circle(TheApp::Instance()->getRenderer(), (int)circleCenter.x, (int)circleCenter.y, 3, 255, 0, 0, 255);
+	draw_circle(TheApp::Instance()->getRenderer(), (int)circleCenter.x, (int)circleCenter.y, wanderRadius, 30, 150, 190, 255);
 	agents[0]->draw();
 	text->Draw();
 }

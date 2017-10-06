@@ -2,7 +2,7 @@
 
 
 
-SteeringBehavior::SteeringBehavior(){}
+SteeringBehavior::SteeringBehavior() : time(1), wanderUpdateTime(1){}
 
 SteeringBehavior::~SteeringBehavior(){}
 
@@ -122,27 +122,32 @@ Vector2D SteeringBehavior::Evade(Agent *agent, Agent *target, float dtime){
 }
 
 //Wander behaviour
-Vector2D SteeringBehavior::Wander(Agent *agent, Vector2D target, float dtime, float wanderMaxAngleChange, float wanderRadius){
-	float wanderAngle = 0.01;
-	float targetAngle;
-	float wanderOffset = (target - agent->position).Length();
+Vector2D SteeringBehavior::Wander(Agent *agent, Vector2D target, float dtime, float wanderMaxAngleChange, float wanderOffset, float wanderRadius, Vector2D* circle, Vector2D* newT){
+
 	//Calculate the angle
-	float angle = AngleSmooth(atan2f(agent->velocity.x, agent->velocity.y));
-	float distance = (agent->position - target).Length();
-	
-	wanderAngle += RandomBinomial() * wanderMaxAngleChange;
-	targetAngle = angle + wanderAngle;
+	if (time > wanderUpdateTime) {
+		float angle = AngleSmooth(atan2f(agent->velocity.x, agent->velocity.y));
 
-	Vector2D circleCenter = agent->position + agent->velocity * wanderOffset;
-	Vector2D newTarget(circleCenter.x * wanderRadius * cos(targetAngle), circleCenter.y * wanderRadius * sin(targetAngle));
+		wanderAngle += RandomBinomial() * wanderMaxAngleChange;
+		targetAngle = angle + wanderAngle;
+		time -= wanderUpdateTime;
+	}
 
+	Vector2D circleCenter = agent->position + agent->getVelocity().Normalize() * wanderOffset;
+	Vector2D newTarget(circleCenter.x + wanderRadius * cos(targetAngle * DEG2RAD),
+					   circleCenter.y + wanderRadius * sin(targetAngle * DEG2RAD));
+
+	time += dtime;
+	*circle = circleCenter;
+	*newT = newTarget;
 	return Seek(agent, newTarget, dtime);
-	
+
 }
 
-Vector2D SteeringBehavior::Wander(Agent *agent, Agent *target, float dtime, float wanderMaxAngleChange, float wanderRadius){
-	return Wander(agent, target->position, dtime, wanderMaxAngleChange, wanderRadius);
+Vector2D SteeringBehavior::Wander(Agent *agent, Agent *target, float dtime, float wanderMaxAngleChange, float wanderOffset, float wanderRadius, Vector2D* circle, Vector2D* newT){
+	return Wander(agent, target->position, dtime, wanderMaxAngleChange, wanderOffset, wanderRadius, circle, newT);
 }
+
 float SteeringBehavior::AngleSmooth(float angle) {
 	float angleToUpdate = angle;
 	float angleDelta = angleToUpdate - angle;

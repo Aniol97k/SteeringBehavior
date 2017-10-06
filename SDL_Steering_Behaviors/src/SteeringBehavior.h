@@ -6,6 +6,13 @@ class Agent;
 
 class SteeringBehavior
 {
+private:
+	//All the times are stored as seconds
+	float time;
+	float wanderUpdateTime;
+	//Wander variables
+	float wanderAngle = 0.f;
+	float targetAngle = 0.f;
 public:
 	SteeringBehavior();
 	~SteeringBehavior();
@@ -33,7 +40,7 @@ public:
 	Vector2D Evade(Agent *agent, Vector2D target, float dtime);
 	Vector2D Evade(Agent *agent, Agent *target, float dtime);
 
-	Vector2D Wander(Agent *agent, Vector2D target, float dtime, float wanderMaxAngleChange, float wanderRadius);
-	Vector2D Wander(Agent *agent, Agent *target, float dtime, float wanderMaxAngleChange, float wanderRadius);
+	Vector2D Wander(Agent *agent, Vector2D target, float dtime, float wanderMaxAngleChange, float wanderOffset, float wanderRadius, Vector2D* circle, Vector2D* newT);
+	Vector2D Wander(Agent *agent, Agent *target, float dtime, float wanderMaxAngleChange, float wanderOffset, float wanderRadius, Vector2D* circle, Vector2D* newT);
 
 };

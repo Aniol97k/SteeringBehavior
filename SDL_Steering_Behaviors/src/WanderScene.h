@@ -18,4 +18,5 @@ private:
 	Image* text;
 	Vector2D target;
 	float wanderMaxAngleDiff, wanderOffset, wanderRadius;
+	Vector2D circleCenter, newTarget;
 };
