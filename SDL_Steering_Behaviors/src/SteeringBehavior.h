@@ -22,6 +22,7 @@ public:
 
 	Vector2D KinematicSeek(Agent *agent, Vector2D target, float dtime);
 	Vector2D KinematicSeek(Agent *agent, Agent *target, float dtime);
+
 	Vector2D KinematicFlee(Agent *agent, Vector2D target, float dtime);
 	Vector2D KinematicFlee(Agent *agent, Agent *target, float dtime);
 
@@ -42,5 +43,8 @@ public:
 
 	Vector2D Wander(Agent *agent, Vector2D target, float dtime, float wanderMaxAngleChange, float wanderOffset, float wanderRadius, Vector2D* circle, Vector2D* newT);
 	Vector2D Wander(Agent *agent, Agent *target, float dtime, float wanderMaxAngleChange, float wanderOffset, float wanderRadius, Vector2D* circle, Vector2D* newT);
+
+	Vector2D PathFollowing(Agent *agent, Vector2D target, float dtime, Vector2D path[], int currentIndex);
+	Vector2D PathFollowing(Agent *agent, Agent *target, float dtime);
 
 };

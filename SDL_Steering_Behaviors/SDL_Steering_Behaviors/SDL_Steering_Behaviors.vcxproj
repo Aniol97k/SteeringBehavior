@@ -136,6 +136,7 @@
     <ClCompile Include="..\src\Image.cpp" />
     <ClCompile Include="..\src\Line.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\PathFollowingScene.cpp" />
     <ClCompile Include="..\src\PursueScene.cpp" />
     <ClCompile Include="..\src\SceneKinematicFlee.cpp" />
     <ClCompile Include="..\src\SceneKinematicSeek .cpp" />
@@ -151,6 +152,7 @@
     <ClInclude Include="..\src\FleeScene.h" />
     <ClInclude Include="..\src\Image.h" />
     <ClInclude Include="..\src\Line.h" />
+    <ClInclude Include="..\src\PathFollowingScene.h" />
     <ClInclude Include="..\src\PursueScene.h" />
     <ClInclude Include="..\src\SceneKinematicFlee.h" />
     <ClInclude Include="..\src\SceneKinematicSeek.h" />

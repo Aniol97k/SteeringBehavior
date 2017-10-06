@@ -27,6 +27,8 @@ private:
 	float orientation;
 	float max_force;
 	float max_velocity;
+	int currentIndex;
+	Vector2D path;
 
 	SDL_Color color;
 

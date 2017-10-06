@@ -1,10 +1,19 @@
 #include "SteeringBehavior.h"
 
+int ARRIVAL_DISTANCE = 5;
 
 
 SteeringBehavior::SteeringBehavior() : time(1), wanderUpdateTime(1){}
 
 SteeringBehavior::~SteeringBehavior(){}
+
+float SteeringBehavior::AngleSmooth(float angle) {
+	float angleToUpdate = angle;
+	float angleDelta = angleToUpdate - angle;
+	if (angleDelta > 180.f) {angle += 360;}
+	else if (angleDelta < -180.f) {	angle -= 360.f;}
+	return (angle + angleToUpdate * 0.1f);
+}
 
 Vector2D SteeringBehavior::KinematicSeek(Agent *agent, Vector2D target, float dtime){
 	Vector2D steering = target - agent->position;
@@ -144,6 +153,19 @@ Vector2D SteeringBehavior::Wander(Agent *agent, Vector2D target, float dtime, fl
 
 }
 
+
+//Path Following behaviour
+Vector2D SteeringBehavior::PathFollowing(Agent *agent, Vector2D target, float dtime, Vector2D path[], int currentIndex) {
+	Vector2D desiredVelocity = path[currentIndex] - agent->getPosition();
+	desiredVelocity = desiredVelocity.Normalize();
+	desiredVelocity *= agent->max_velocity;
+
+	Vector2D steeringForce = desiredVelocity - agent->getVelocity();
+	steeringForce /= agent->max_velocity;
+	steeringForce *= agent->max_force;
+
+	if ((agent->position - path[currentIndex]).Length() < ARRIVAL_DISTANCE) {	currentIndex += 1;	}
+	return steeringForce;
 Vector2D SteeringBehavior::Wander(Agent *agent, Agent *target, float dtime, float wanderMaxAngleChange, float wanderOffset, float wanderRadius, Vector2D* circle, Vector2D* newT){
 	return Wander(agent, target->position, dtime, wanderMaxAngleChange, wanderOffset, wanderRadius, circle, newT);
 }
@@ -158,5 +180,7 @@ float SteeringBehavior::AngleSmooth(float angle) {
 		angle -= 360.f;
 	}
 	return (angle + angleToUpdate * 0.1f);
-}
 
+Vector2D SteeringBehavior::PathFollowing(Agent *agent, Agent *target, float dtime) {
+	return Seek(agent, target->position, dtime);
+}
