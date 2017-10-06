@@ -37,7 +37,7 @@ public:
 	Vector2D Wander(Agent *agent, Vector2D target, float dtime, float wanderMaxAngleChange, float wanderRadius);
 	Vector2D Wander(Agent *agent, Agent *target, float dtime, float wanderMaxAngleChange, float wanderRadius);
 
-	Vector2D PathFollowing(Agent *agent, Vector2D target, float dtime);
+	Vector2D PathFollowing(Agent *agent, Vector2D target, float dtime, Vector2D path[], int currentIndex);
 	Vector2D PathFollowing(Agent *agent, Agent *target, float dtime);
 
 };

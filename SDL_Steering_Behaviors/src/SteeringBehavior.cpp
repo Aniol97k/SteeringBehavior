@@ -1,6 +1,6 @@
 #include "SteeringBehavior.h"
 
-
+int ARRIVAL_DISTANCE = 5;
 
 SteeringBehavior::SteeringBehavior(){}
 
@@ -9,12 +9,8 @@ SteeringBehavior::~SteeringBehavior(){}
 float SteeringBehavior::AngleSmooth(float angle) {
 	float angleToUpdate = angle;
 	float angleDelta = angleToUpdate - angle;
-	if (angleDelta > 180.f) {
-		angle += 360;
-	}
-	else if (angleDelta < -180.f) {
-		angle -= 360.f;
-	}
+	if (angleDelta > 180.f) {angle += 360;}
+	else if (angleDelta < -180.f) {	angle -= 360.f;}
 	return (angle + angleToUpdate * 0.1f);
 }
 
@@ -154,8 +150,8 @@ Vector2D SteeringBehavior::Wander(Agent *agent, Vector2D target, float dtime, fl
 
 
 //Path Following behaviour
-Vector2D SteeringBehavior::PathFollowing(Agent *agent, Vector2D target, float dtime) {
-	Vector2D desiredVelocity = target - agent->getPosition();
+Vector2D SteeringBehavior::PathFollowing(Agent *agent, Vector2D target, float dtime, Vector2D path[], int currentIndex) {
+	Vector2D desiredVelocity = path[currentIndex] - agent->getPosition();
 	desiredVelocity = desiredVelocity.Normalize();
 	desiredVelocity *= agent->max_velocity;
 
@@ -163,6 +159,7 @@ Vector2D SteeringBehavior::PathFollowing(Agent *agent, Vector2D target, float dt
 	steeringForce /= agent->max_velocity;
 	steeringForce *= agent->max_force;
 
+	if ((agent->position - path[currentIndex]).Length() < ARRIVAL_DISTANCE) {	currentIndex += 1;	}
 	return steeringForce;
 }
 
