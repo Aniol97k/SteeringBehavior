@@ -1,27 +1,19 @@
-﻿  WanderScene.cpp
+﻿  SteeringBehavior.cpp
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.cpp(138): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Generating Code...
+  Compiling...
+  WanderScene.cpp
 c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\wanderscene.cpp(46): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  utils .cpp
-  SteeringBehavior.cpp
-c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.cpp(126): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
   SeekScene.cpp
-  SDL_SimpleApp.cpp
   SceneKinematicSeek .cpp
   SceneKinematicFlee.cpp
   PursueScene.cpp
-c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\pursuescene.cpp(15): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  main.cpp
-  Line.cpp
-c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\line.cpp(45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\line.cpp(49): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\line.cpp(50): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\line.cpp(51): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  Image.cpp
-c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\image.cpp(30): warning C4838: conversion from 'Uint32' to 'int' requires a narrowing conversion
-c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\image.cpp(31): warning C4838: conversion from 'Uint32' to 'int' requires a narrowing conversion
+  PathFollowingScene.cpp
   FleeScene.cpp
   ArriveScene.cpp
   Agent.cpp
-  Generating Code...
-c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\image.cpp(27): warning C4715: 'Image::LoadImage': not all control paths return a value
   SDL_Steering_Behaviors.vcxproj -> C:\Users\Aniol\Desktop\Projects\SteeringBehavior\SDL_Steering_Behaviors\\bin\SDL_Steering_Behaviors.exe
   SDL_Steering_Behaviors.vcxproj -> C:\Users\Aniol\Desktop\Projects\SteeringBehavior\SDL_Steering_Behaviors\\bin\SDL_Steering_Behaviors.pdb (Partial PDB)

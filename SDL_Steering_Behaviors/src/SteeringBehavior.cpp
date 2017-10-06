@@ -6,6 +6,18 @@ SteeringBehavior::SteeringBehavior(){}
 
 SteeringBehavior::~SteeringBehavior(){}
 
+float SteeringBehavior::AngleSmooth(float angle) {
+	float angleToUpdate = angle;
+	float angleDelta = angleToUpdate - angle;
+	if (angleDelta > 180.f) {
+		angle += 360;
+	}
+	else if (angleDelta < -180.f) {
+		angle -= 360.f;
+	}
+	return (angle + angleToUpdate * 0.1f);
+}
+
 Vector2D SteeringBehavior::KinematicSeek(Agent *agent, Vector2D target, float dtime){
 	Vector2D steering = target - agent->position;
 	steering.Normalize();
@@ -140,18 +152,20 @@ Vector2D SteeringBehavior::Wander(Agent *agent, Vector2D target, float dtime, fl
 	
 }
 
-Vector2D SteeringBehavior::Wander(Agent *agent, Agent *target, float dtime, float wanderMaxAngleChange, float wanderRadius){
-	return Wander(agent, target->position, dtime, wanderMaxAngleChange, wanderRadius);
-}
-float SteeringBehavior::AngleSmooth(float angle) {
-	float angleToUpdate = angle;
-	float angleDelta = angleToUpdate - angle;
-	if (angleDelta > 180.f) {
-		angle += 360;
-	}
-	else if (angleDelta < -180.f) {
-		angle -= 360.f;
-	}
-	return (angle + angleToUpdate * 0.1f);
+
+//Path Following behaviour
+Vector2D SteeringBehavior::PathFollowing(Agent *agent, Vector2D target, float dtime) {
+	Vector2D desiredVelocity = target - agent->getPosition();
+	desiredVelocity = desiredVelocity.Normalize();
+	desiredVelocity *= agent->max_velocity;
+
+	Vector2D steeringForce = desiredVelocity - agent->getVelocity();
+	steeringForce /= agent->max_velocity;
+	steeringForce *= agent->max_force;
+
+	return steeringForce;
 }
 
+Vector2D SteeringBehavior::PathFollowing(Agent *agent, Agent *target, float dtime) {
+	return Seek(agent, target->position, dtime);
+}

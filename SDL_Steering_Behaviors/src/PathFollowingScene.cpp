@@ -10,7 +10,7 @@ PathFollowingScene::PathFollowingScene() {
 	agents.push_back(agent);
 	target = Vector2D(640, 360);
 	text = new Image(Vector2D(TheApp::Instance()->getWinSize().x / 2, 100));
-	text->LoadImage("../res/Text/fleeDemo.png");
+	text->LoadImage("../res/Text/pathFollowing.png");
 }
 
 PathFollowingScene::~PathFollowingScene() {
@@ -35,7 +35,7 @@ void PathFollowingScene::update(float dtime, SDL_Event *event) {
 	default:
 		break;
 	}
-	Vector2D steering_force = agents[0]->Behavior()->Flee(agents[0], agents[0]->getTarget(), dtime);
+	Vector2D steering_force = agents[0]->Behavior()->Seek(agents[0], agents[0]->getTarget(), dtime);
 	agents[0]->update(steering_force, dtime, event);
 }
 
@@ -46,5 +46,5 @@ void PathFollowingScene::draw() {
 }
 
 const char* PathFollowingScene::getTitle() {
-	return "SDL Steering Behaviors :: Flee Demo";
+	return "SDL Steering Behaviors :: Seek Demo";
 }

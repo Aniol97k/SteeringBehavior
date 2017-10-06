@@ -66,7 +66,7 @@
     <ClCompile Include="..\src\WanderScene.cpp">
       <Filter>Scenes\Source</Filter>
     </ClCompile>
-    <ClCompile Include="PathFollowingScene.cpp">
+    <ClCompile Include="..\src\PathFollowingScene.cpp">
       <Filter>Scenes\Source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -116,7 +116,7 @@
     <ClInclude Include="..\src\WanderScene.h">
       <Filter>Scenes\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="PathFollowingScene.h">
+    <ClInclude Include="..\src\PathFollowingScene.h">
       <Filter>Scenes\Headers</Filter>
     </ClInclude>
   </ItemGroup>
