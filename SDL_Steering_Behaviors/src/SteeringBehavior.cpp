@@ -164,8 +164,10 @@ Vector2D SteeringBehavior::PathFollowing(Agent *agent, Vector2D target, float dt
 	steeringForce /= agent->max_velocity;
 	steeringForce *= agent->max_force;
 
-	if ((agent->position - path[currentIndex]).Length() < ARRIVAL_DISTANCE) {	currentIndex += 1;	}
+	if ((agent->position - path[currentIndex]).Length() < ARRIVAL_DISTANCE) { currentIndex += 1; }
 	return steeringForce;
+}
+
 Vector2D SteeringBehavior::Wander(Agent *agent, Agent *target, float dtime, float wanderMaxAngleChange, float wanderOffset, float wanderRadius, Vector2D* circle, Vector2D* newT){
 	return Wander(agent, target->position, dtime, wanderMaxAngleChange, wanderOffset, wanderRadius, circle, newT);
 }
@@ -180,6 +182,7 @@ float SteeringBehavior::AngleSmooth(float angle) {
 		angle -= 360.f;
 	}
 	return (angle + angleToUpdate * 0.1f);
+}
 
 Vector2D SteeringBehavior::PathFollowing(Agent *agent, Agent *target, float dtime) {
 	return Seek(agent, target->position, dtime);
