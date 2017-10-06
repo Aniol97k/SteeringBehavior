@@ -144,6 +144,7 @@
     <ClCompile Include="..\src\SteeringBehavior.cpp" />
     <ClCompile Include="..\src\utils .cpp" />
     <ClCompile Include="..\src\WanderScene.cpp" />
+    <ClCompile Include="PathFollowingScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Agent.h" />
@@ -161,6 +162,7 @@
     <ClInclude Include="..\src\SDL_SimpleApp.h" />
     <ClInclude Include="..\src\Vector2D.h" />
     <ClInclude Include="..\src\WanderScene.h" />
+    <ClInclude Include="PathFollowingScene.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\res\spritesheet.png" />
