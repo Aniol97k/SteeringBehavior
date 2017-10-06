@@ -7,13 +7,6 @@ SteeringBehavior::SteeringBehavior() : time(1), wanderUpdateTime(1){}
 
 SteeringBehavior::~SteeringBehavior(){}
 
-float SteeringBehavior::AngleSmooth(float angle) {
-	float angleToUpdate = angle;
-	float angleDelta = angleToUpdate - angle;
-	if (angleDelta > 180.f) {angle += 360;}
-	else if (angleDelta < -180.f) {	angle -= 360.f;}
-	return (angle + angleToUpdate * 0.1f);
-}
 
 Vector2D SteeringBehavior::KinematicSeek(Agent *agent, Vector2D target, float dtime){
 	Vector2D steering = target - agent->position;
