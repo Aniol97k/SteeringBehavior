@@ -41,19 +41,17 @@ void AdvancedPathFollowingScene::update(float dtime, SDL_Event *event) {
 void AdvancedPathFollowingScene::draw() {
 
 	Line line;
-	for (int i = 0; i < path.size() - 1; i++) {
+	line.setOrigin(agents[0]->getPosition());
+	for (int i = 0; i < path.size(); i++) {
+		line.setDestiny(path[i]);
+		line.drawLine();
 		draw_circle(TheApp::Instance()->getRenderer(), (int)path[i].x, (int)path[i].y, 10, 255, 0, 0, 255);
 		line.setOrigin(path[i]);
-		line.setDestiny(path[i + 1]);
-		line.drawLine();
 	}
-	if(!path.empty())
-		draw_circle(TheApp::Instance()->getRenderer(), (int)path.end()->x, (int)path.end()->y, 10, 255, 0, 0, 255);
-
 	agents[0]->draw();
 	text->Draw();
 }
 
 const char* AdvancedPathFollowingScene::getTitle() {
-	return "SDL Steering Behaviors :: Simple Path Finding Demo";
+	return "SDL Steering Behaviors :: Advanced Path Finding Demo";
 }

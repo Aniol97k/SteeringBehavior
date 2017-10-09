@@ -50,6 +50,7 @@ public:
 	void setTarget(Vector2D target);
 	void setVelocity(Vector2D velocity);
 	void setMaxVelocity(float);
+	inline float getMaxForce() { return max_force; }
 	void setMaxForce(float);
 	void setMass(float mass);
 	void setColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a);

@@ -51,4 +51,5 @@ public:
 	Vector2D AdvancedPathFollowing(Agent *agent, Vector2D target, float dtime, std::vector<Vector2D>* path);
 	Vector2D AdvancedPathFollowing(Agent *agent, Agent *target, float dtime, std::vector<Vector2D>* path);
 
+	Vector2D Flocking(std::vector <Agent*> agents, float dtime, int agentIndex);
 };

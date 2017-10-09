@@ -42,17 +42,22 @@ void PathFollowingScene::draw() {
 	
 	std::queue<Vector2D> drawPath = path;
 	Line line;
-	for (int i = 0; i < path.size(); i++) {
-		if (drawPath.size() != 1) {
-			line.setOrigin(drawPath.front());
-			draw_circle(TheApp::Instance()->getRenderer(), (int)drawPath.front().x, (int)drawPath.front().y, 10, 255, 0, 0, 255);
-			drawPath.pop();
-			line.setDestiny(drawPath.front());
-			line.drawLine();
-		}
-		else {
-			draw_circle(TheApp::Instance()->getRenderer(), (int)drawPath.front().x, (int)drawPath.front().y, 10, 255, 0, 0, 255);
-			drawPath.pop();
+	if (!path.empty()) {
+		line.setOrigin(agents[0]->getPosition());
+		line.setDestiny(drawPath.front());
+		line.drawLine();
+		for (int i = 0; i < path.size(); i++) {
+			if (drawPath.size() != 1) {
+				line.setOrigin(drawPath.front());
+				draw_circle(TheApp::Instance()->getRenderer(), (int)drawPath.front().x, (int)drawPath.front().y, 10, 255, 0, 0, 255);
+				drawPath.pop();
+				line.setDestiny(drawPath.front());
+				line.drawLine();
+			}
+			else {
+				draw_circle(TheApp::Instance()->getRenderer(), (int)drawPath.front().x, (int)drawPath.front().y, 10, 255, 0, 0, 255);
+				drawPath.pop();
+			}
 		}
 	}
 	agents[0]->draw();

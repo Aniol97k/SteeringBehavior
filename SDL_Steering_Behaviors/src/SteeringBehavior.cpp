@@ -195,35 +195,73 @@ Vector2D SteeringBehavior::AdvancedPathFollowing(Agent *agent, Vector2D target, 
 
 	Vector2D steeringForce(0, 0);
 
+	if (path->empty())
+		return agent->getVelocity() * -0.5f;
+
+
+
 	if (path->size() == 1) {
 		steeringForce = Arrive(agent, *path->begin(), 25, dtime);
 		if ((agent->position - *path->begin()).Length() <= ARRIVAL_DISTANCE) {
-			
-			int position = 0;
-			for (int i = 0; i < path->size(); i++) {
-				if ((agent->getPosition() - path->at(i)).Length() < (agent->getPosition() - path->at(i)).Length()) {
-					position = i;
-				}
-				path->erase(path->begin(), path->begin() + position - 1);
-			}
+			path->clear();
 		}
 	}
 	else if (!path->empty()) {
 		steeringForce = Seek(agent, *path->begin(), dtime);
-		if ((agent->position - *path->begin()).Length() <= ARRIVAL_DISTANCE) {
-			//path->pop();
+		if ((agent->getPosition() - *path->begin()).Length() <= ARRIVAL_DISTANCE) {
+
+			float distance = (agent->getPosition() - path->at(1)).Length();
+			float shortestDistance = distance;
 			int position = 0;
-			for (int i = 0; i < path->size(); i++) {
-				if ((agent->getPosition() - path->at(i)).Length() < (agent->getPosition() - path->at(i)).Length()) {
+
+			for (int i = 1; i < path->size(); i++) {
+				distance = (agent->getPosition() - path->at(i)).Length();
+				if (distance <= shortestDistance) {
 					position = i;
+					shortestDistance = distance;
 				}
-				path->erase(path->begin(), path->begin() + position - 1);
+				
 			}
+			if (position != 0)
+				path->erase(path->begin(), path->begin() + position);
+			else
+				path->erase(path->begin());
 		}
 	}
-	else {
-		steeringForce = agent->getVelocity() * -0.5f;
-	}
+	/*else if (!path->empty()) {
+		steeringForce = Seek(agent, *path->begin(), dtime);
+		if ((agent->getPosition() - *path->begin()).Length() <= ARRIVAL_DISTANCE) {
+
+			float distance = (agent->getPosition() - path->at(1)).Length();
+			float shortestDistance = distance;
+			int position = 0;
+
+			for (int i = 1; i < path->size() - 1; i++) {
+				//Line equation ->  y = (Vy / Vx)x + c
+				//Calculate the line vector
+				Vector2D lineVector(path->at(i).x - path->at(i + 1).x, path->at(i).y - path->at(i + 1).y);
+				lineVector.Normalize();
+				//calculate the line offset variable
+				float c = path->at(i).y - (lineVector.y / lineVector.x) * path->at(i).x;
+				//Calculate the projection of the agent in that line
+				Vector2D closestPoint = abs(lineVector.x * agent->getPosition().x + lineVector.y * agent->getPosition().y + c) / sqrt(pow(lineVector.x, 2) + pow(lineVector.y, 2));
+				//Calculate the distance from the agent to it's projection in the line
+				distance = (agent->getPosition() - closestPoint).Length();
+
+				if (distance <= shortestDistance) {
+					position = i;
+					path->at(i) = closestPoint;
+					shortestDistance = distance;
+				}
+
+			}
+			if (position != 0)
+				path->erase(path->begin(), path->begin() + position - 1);
+			else
+				path->erase(path->begin());
+		}
+	}*/
+
 	return steeringForce;
 }
 
@@ -231,5 +269,53 @@ Vector2D SteeringBehavior::AdvancedPathFollowing(Agent *agent, Vector2D target, 
 
 Vector2D SteeringBehavior::AdvancedPathFollowing(Agent *agent, Agent *target, float dtime, std::vector<Vector2D>* path) {
 	return AdvancedPathFollowing(agent, target->position, dtime, path);
+}
+
+Vector2D SteeringBehavior::Flocking(std::vector <Agent*> agents, float dtime, int agentIndex) {
+	//Constants used in the function
+	float SEPARATION_K = 0.5;
+	float COHESION_K = 0.3;
+	float ALIGNMENT_K = 0.2;
+
+	float NEIGHBOR_RADIUS = 200.f;
+
+	//Shared variables
+	int agentCount = 0;
+	Vector2D flockingForce;
+
+	//Separation variables
+	Vector2D separationVector;
+	Vector2D separationDirection;
+	//Cohesion variables
+	Vector2D averagePosition;
+	Vector2D cohesionDirection;
+	//Alignment variables
+	Vector2D averageVelocity;
+	Vector2D alignmentDirection;
+	
+	//We iterate all the agents, for each agent we check all the others
+	for (int i = 0; i < agents.size(); i++) {
+		//The agent won't use the algorithm on itself
+		if (i != agentIndex) {
+			//Check if the other agent is in it's neighborhood
+			if ((agents[agentIndex]->getPosition() - agents[i]->getPosition()).Length() < NEIGHBOR_RADIUS) {
+				averagePosition += agents[i]->getPosition();
+				averageVelocity += agents[i]->getVelocity();
+				separationVector += agents[agentIndex]->getPosition() - agents[i]->getPosition();
+
+				agentCount++;
+			}
+		}
+	}
+	separationVector /= agentCount;
+	averageVelocity /= agentCount;
+	averagePosition /= agentCount;
+	averagePosition -= agents[agentIndex]->getPosition();
+
+	separationDirection = separationVector.Normalize();
+	cohesionDirection = averagePosition.Normalize();
+	alignmentDirection = averageVelocity.Normalize();
+
+	return flockingForce = separationDirection * SEPARATION_K + cohesionDirection * COHESION_K + alignmentDirection * ALIGNMENT_K;
 }
 

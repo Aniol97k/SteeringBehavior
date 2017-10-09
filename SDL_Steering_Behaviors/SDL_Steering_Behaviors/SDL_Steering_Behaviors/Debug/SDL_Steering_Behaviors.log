@@ -1,8 +1,10 @@
 ﻿  SteeringBehavior.cpp
-c:\users\earnau\source\repos\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.cpp(203): warning C4018: '<': signed/unsigned mismatch
-c:\users\earnau\source\repos\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.cpp(216): warning C4018: '<': signed/unsigned mismatch
-  AdvancedPathFollowingScene.cpp
-c:\users\earnau\source\repos\steeringbehavior\sdl_steering_behaviors\src\advancedpathfollowingscene.cpp(44): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-  SDL_Steering_Behaviors.vcxproj -> C:\Users\earnau\Source\Repos\SteeringBehavior\SDL_Steering_Behaviors\\bin\SDL_Steering_Behaviors.exe
-  SDL_Steering_Behaviors.vcxproj -> C:\Users\earnau\Source\Repos\SteeringBehavior\SDL_Steering_Behaviors\\bin\SDL_Steering_Behaviors.pdb (Partial PDB)
+c:\users\usuario\source\repos\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.cpp(239): warning C4018: '<': signed/unsigned mismatch
+c:\users\usuario\source\repos\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.cpp(277): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\usuario\source\repos\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.cpp(278): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\usuario\source\repos\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.cpp(297): warning C4018: '<': signed/unsigned mismatch
+c:\users\usuario\source\repos\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.cpp(310): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\usuario\source\repos\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.cpp(311): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\usuario\source\repos\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.cpp(312): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  SDL_Steering_Behaviors.vcxproj -> C:\Users\Usuario\Source\Repos\SteeringBehavior\SDL_Steering_Behaviors\\bin\SDL_Steering_Behaviors.exe
+  SDL_Steering_Behaviors.vcxproj -> C:\Users\Usuario\Source\Repos\SteeringBehavior\SDL_Steering_Behaviors\\bin\SDL_Steering_Behaviors.pdb (Partial PDB)

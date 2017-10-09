@@ -134,6 +134,7 @@
     <ClCompile Include="..\src\Agent.cpp" />
     <ClCompile Include="..\src\ArriveScene.cpp" />
     <ClCompile Include="..\src\FleeScene.cpp" />
+    <ClCompile Include="..\src\FlockingScene.cpp" />
     <ClCompile Include="..\src\Image.cpp" />
     <ClCompile Include="..\src\Line.cpp" />
     <ClCompile Include="..\src\main.cpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="..\src\Agent.h" />
     <ClInclude Include="..\src\ArriveScene.h" />
     <ClInclude Include="..\src\FleeScene.h" />
+    <ClInclude Include="..\src\FlockingScene.h" />
     <ClInclude Include="..\src\Image.h" />
     <ClInclude Include="..\src\Line.h" />
     <ClInclude Include="..\src\PathFollowingScene.h" />
