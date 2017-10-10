@@ -15,6 +15,7 @@
 #include "PerimeterAvoidanceScene.h"
 #include "CollisionAvoidanceScene.h"
 #include "ObstacleAvoidanceScene.h"
+#include "FlockingScene.h"
 
 
 using namespace std; 
@@ -108,6 +109,12 @@ int main(int argc, char ** argv)
 				if (event.key.keysym.scancode == SDL_SCANCODE_0) {
 					delete(curr_scene);
 					curr_scene = new ObstacleAvoidanceScene;
+					app->setWindowTitle(curr_scene->getTitle());
+				}
+
+				if (event.key.keysym.scancode == SDL_SCANCODE_P) {
+					delete(curr_scene);
+					curr_scene = new FlockingScene;
 					app->setWindowTitle(curr_scene->getTitle());
 				}
 

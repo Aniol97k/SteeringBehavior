@@ -307,16 +307,20 @@ Vector2D SteeringBehavior::Flocking(std::vector <Agent*> agents, float dtime, in
 			}
 		}
 	}
-	separationVector /= agentCount;
-	averageVelocity /= agentCount;
-	averagePosition /= agentCount;
-	averagePosition -= agents[agentIndex]->getPosition();
+	if (agentCount > 0) {
+		separationVector /= agentCount;
+		averageVelocity /= agentCount;
+		averagePosition /= agentCount;
+		averagePosition -= agents[agentIndex]->getPosition();
 
-	separationDirection = separationVector.Normalize();
-	cohesionDirection = averagePosition.Normalize();
-	alignmentDirection = averageVelocity.Normalize();
+		separationDirection = separationVector.Normalize();
+		cohesionDirection = averagePosition.Normalize();
+		alignmentDirection = averageVelocity.Normalize();
 
-	return flockingForce = separationDirection * SEPARATION_K + cohesionDirection * COHESION_K + alignmentDirection * ALIGNMENT_K;
+
+		return flockingForce = (separationDirection * SEPARATION_K + cohesionDirection * COHESION_K + alignmentDirection * ALIGNMENT_K) * agents[agentIndex]->getMaxForce();
+	}
+	return agents[agentIndex]->getVelocity() * -0.5f;
 }
 
 //Perimeter Avoidance

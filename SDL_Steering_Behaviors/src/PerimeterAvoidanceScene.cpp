@@ -47,6 +47,20 @@ void PerimeterAvoidanceScene::draw() {
 	draw_circle(TheApp::Instance()->getRenderer(), (int)newTarget.x, (int)newTarget.y, 15, 255, 0, 0, 255);
 	draw_circle(TheApp::Instance()->getRenderer(), (int)circleCenter.x, (int)circleCenter.y, 3, 255, 0, 0, 255);
 	draw_circle(TheApp::Instance()->getRenderer(), (int)circleCenter.x, (int)circleCenter.y, 75.f, 30, 150, 190, 255);
+	Line line;
+	line.setColor(100, 100, 100);
+	line.setOrigin(Vector2D(100, 100));
+	line.setDestiny(Vector2D(TheApp::Instance()->getWinSize().x - 100, 100));
+	line.drawLine();
+	line.setOrigin(Vector2D(TheApp::Instance()->getWinSize().x - 100, 100));
+	line.setDestiny(Vector2D(TheApp::Instance()->getWinSize().x - 100, TheApp::Instance()->getWinSize().y - 100));
+	line.drawLine();
+	line.setOrigin(Vector2D(TheApp::Instance()->getWinSize().x - 100, TheApp::Instance()->getWinSize().y - 100));
+	line.setDestiny(Vector2D(100, TheApp::Instance()->getWinSize().y - 100));
+	line.drawLine();
+	line.setOrigin(Vector2D(100, TheApp::Instance()->getWinSize().y - 100));
+	line.setDestiny(Vector2D(100, 100));
+	line.drawLine();
 	agents[0]->draw();
 	text->Draw();
 }

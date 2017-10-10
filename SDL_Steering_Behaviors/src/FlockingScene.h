@@ -15,6 +15,7 @@ public:
 	void draw();
 	const char* getTitle();
 private:
+	bool showRadius;
 	std::vector<Agent*> agents;
 	Image* text;
 	Vector2D target;
