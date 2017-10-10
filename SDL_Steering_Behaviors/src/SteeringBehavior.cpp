@@ -110,17 +110,10 @@ Vector2D SteeringBehavior::Pursue(Agent *agent, Vector2D target, Vector2D target
 	return steeringForce;
 }
 
-Vector2D SteeringBehavior::Pursue(Agent *agent, Agent *target, float dtime, Vector2D* predictedTarget){
-	return Pursue(agent, target->position, target->velocity, dtime, predictedTarget);
-}
 
 //Evade behaviour
-Vector2D SteeringBehavior::Evade(Agent *agent, Vector2D target, float dtime){
-	return Vector2D(0, 0);
-}
-
-Vector2D SteeringBehavior::Evade(Agent *agent, Agent *target, float dtime){
-	return Evade(agent, target->position, dtime);
+Vector2D SteeringBehavior::Evade(Agent *agent, Vector2D target, Vector2D targetV, float dtime, Vector2D* predictedTarget){
+	return Pursue(agent, target, targetV, dtime, predictedTarget) * -1.f;
 }
 
 //Wander behaviour
@@ -227,6 +220,7 @@ Vector2D SteeringBehavior::AdvancedPathFollowing(Agent *agent, Vector2D target, 
 				path->erase(path->begin());
 		}
 	}
+	//Attemp we made to implement a more complex path finding (closest point in the path)
 	/*else if (!path->empty()) {
 		steeringForce = Seek(agent, *path->begin(), dtime);
 		if ((agent->getPosition() - *path->begin()).Length() <= ARRIVAL_DISTANCE) {
@@ -273,9 +267,9 @@ Vector2D SteeringBehavior::AdvancedPathFollowing(Agent *agent, Agent *target, fl
 //Flocking behavior
 Vector2D SteeringBehavior::Flocking(std::vector <Agent*> agents, float dtime, int agentIndex) {
 	//Constants used in the function
-	float SEPARATION_K = 0.5;
-	float COHESION_K = 0.3;
-	float ALIGNMENT_K = 0.2;
+	float SEPARATION_K = 0.8f;
+	float COHESION_K = 0.3f;
+	float ALIGNMENT_K = 0.2f;
 
 	float NEIGHBOR_RADIUS = 200.f;
 
@@ -318,7 +312,7 @@ Vector2D SteeringBehavior::Flocking(std::vector <Agent*> agents, float dtime, in
 		alignmentDirection = averageVelocity.Normalize();
 
 
-		return flockingForce = (separationDirection * SEPARATION_K + cohesionDirection * COHESION_K + alignmentDirection * ALIGNMENT_K) * agents[agentIndex]->getMaxForce();
+		return flockingForce = (separationDirection * SEPARATION_K + cohesionDirection * COHESION_K + alignmentDirection * ALIGNMENT_K).Normalize() * agents[agentIndex]->getMaxForce();
 	}
 	return agents[agentIndex]->getVelocity() * -0.5f;
 }
@@ -352,70 +346,4 @@ Vector2D SteeringBehavior::PerimeterAvoidance(Agent *agent, Vector2D target, flo
 
 Vector2D SteeringBehavior::PerimeterAvoidance(Agent *agent, Agent *target, float dtime, Vector2D perimeterSize) {
 	return PerimeterAvoidance(agent, target->position, dtime, perimeterSize);
-}
-
-//Collision Avoidance
-Vector2D SteeringBehavior::CollisionAvoidance(Agent *agent, Vector2D target, float dtime) {
-	/*Vector2D desiredVelocity = target - agent->getPosition();
-	desiredVelocity = desiredVelocity.Normalize();
-	desiredVelocity *= agent->max_velocity;
-
-	Vector2D steeringForce = desiredVelocity - agent->getVelocity();
-	steeringForce /= agent->max_velocity;
-	steeringForce *= agent->max_force;
-
-	for (Entity in EntityGroup) {
-		if (isInsideCone(Entity->position, agent->position)) {
-			float currentDistance = distance(agent->position, Entity->position);
-			if (currentDistance < shortestDistance) {
-				nearestTarget = Entity;
-				shortestDistance = currentDistance;
-				collision = true;
-			}
-		}
-	}
-
-	if (collision == true) { Flee(nearestTarget->position); }
-	return steeringForce;*/
-	return Vector2D(0, 0);
-}
-
-Vector2D SteeringBehavior::CollisionAvoidance(Agent *agent, Agent *target, float dtime) {
-	return CollisionAvoidance(agent, target->position, dtime);
-}
-
-
-//Obstacle Avoidance.
-Vector2D SteeringBehavior::ObstacleAvoidance(Agent *agent, Vector2D target, float dtime) {
-	/*Vector2D desiredVelocity = target - agent->getPosition();
-	desiredVelocity = desiredVelocity.Normalize();
-	desiredVelocity *= agent->max_velocity;
-
-	Vector2D steeringForce = desiredVelocity - agent->getVelocity();
-	steeringForce /= agent->max_velocity;
-	steeringForce *= agent->max_force;
-
-	Vector2D raycastVector = agent->position;
-	raycastVector += agent->velocity.Normalize()*avoidLookAhead;
-	Vector2D intersectionPoint, normalVector;
-	bool obstacleAvoidanceCollision = true;
-
-	for (Obstacle in ObstacleGroup) {
-		obstacleCollision = Obstacle.intersectSegment(Obstacle, agent->position, raycastVector, intersectionPoint, normalVector);
-		if (obstacleCollision == true) break;
-	}
-
-	if (obstacleCollision == true) {
-		Vector2D avoidTarget = intersectionPoint;
-		avoidTarget += normalVector*avoidanceDistance;
-		steeringForce = Seek(avoidTarget);
-	}
-
-
-	return steeringForce;*/
-	return Vector2D(0, 0);
-}
-
-Vector2D SteeringBehavior::ObstacleAvoidance(Agent *agent, Agent *target, float dtime) {
-	return ObstacleAvoidance(agent, target->position, dtime);
 }

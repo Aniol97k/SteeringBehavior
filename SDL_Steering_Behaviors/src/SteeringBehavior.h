@@ -37,10 +37,8 @@ public:
 	Vector2D Arrive(Agent *agent, Agent *target, int radius, float dtime);
 
 	Vector2D Pursue(Agent *agent, Vector2D target, Vector2D targetV, float dtime, Vector2D* predictedTarget);
-	Vector2D Pursue(Agent *agent, Agent *target, float dtime, Vector2D* predictedTarget);
 
-	Vector2D Evade(Agent *agent, Vector2D target, float dtime);
-	Vector2D Evade(Agent *agent, Agent *target, float dtime);
+	Vector2D Evade(Agent *agent, Vector2D target, Vector2D targetV, float dtime, Vector2D* predictedTarget);
 
 	Vector2D Wander(Agent *agent, Vector2D target, float dtime, float wanderMaxAngleChange, float wanderOffset, float wanderRadius, Vector2D* circle, Vector2D* newT);
 	Vector2D Wander(Agent *agent, Agent *target, float dtime, float wanderMaxAngleChange, float wanderOffset, float wanderRadius, Vector2D* circle, Vector2D* newT);
@@ -55,10 +53,4 @@ public:
 
 	Vector2D PerimeterAvoidance(Agent *agent, Vector2D target, float dtime, Vector2D perimeterSize);
 	Vector2D PerimeterAvoidance(Agent *agent, Agent *target, float dtime, Vector2D perimeterSize);
-
-	Vector2D ObstacleAvoidance(Agent *agent, Vector2D target, float dtime);
-	Vector2D ObstacleAvoidance(Agent *agent, Agent *target, float dtime);
-
-	Vector2D CollisionAvoidance(Agent *agent, Vector2D target, float dtime);
-	Vector2D CollisionAvoidance(Agent *agent, Agent *target, float dtime);
 };

@@ -40,17 +40,6 @@ int main(int argc, char ** argv)
 
 			case SDL_KEYDOWN:
 				
-				/*if (event.key.keysym.scancode == SDL_SCANCODE_8){
-					delete(curr_scene);
-					curr_scene = new SceneKinematicSeek;
-					app->setWindowTitle(curr_scene->getTitle());
-				}
-
-				if (event.key.keysym.scancode == SDL_SCANCODE_9){
-					delete(curr_scene);
-					curr_scene = new SceneKinematicFlee;
-					app->setWindowTitle(curr_scene->getTitle());
-				}*/
 
 				if (event.key.keysym.scancode == SDL_SCANCODE_1){
 					delete(curr_scene);
@@ -101,18 +90,6 @@ int main(int argc, char ** argv)
 				}
 
 				if (event.key.keysym.scancode == SDL_SCANCODE_9) {
-					delete(curr_scene);
-					curr_scene = new CollisionAvoidanceScene;
-					app->setWindowTitle(curr_scene->getTitle());
-				}
-
-				if (event.key.keysym.scancode == SDL_SCANCODE_0) {
-					delete(curr_scene);
-					curr_scene = new ObstacleAvoidanceScene;
-					app->setWindowTitle(curr_scene->getTitle());
-				}
-
-				if (event.key.keysym.scancode == SDL_SCANCODE_P) {
 					delete(curr_scene);
 					curr_scene = new FlockingScene;
 					app->setWindowTitle(curr_scene->getTitle());

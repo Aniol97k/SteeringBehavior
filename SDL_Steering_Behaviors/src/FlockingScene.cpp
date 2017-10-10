@@ -56,9 +56,16 @@ void FlockingScene::update(float dtime, SDL_Event *event) {
 	}
 	for (int i = 0; i < agents.size(); i++) {
 		Vector2D steering_force = agents[i]->Behavior()->PerimeterAvoidance(agents[i], agents[i]->getTarget(), dtime, Vector2D(100, 100));
-		if(steering_force.Length() <= 0.f)
-			steering_force = agents[i]->Behavior()->Flocking(agents, dtime, i);
-		agents[i]->update(steering_force, dtime, event);
+		if (steering_force.Length() <= 0.f) {
+			steering_force = agents[i]->Behavior()->Flocking(agents, dtime, i) * 0.5f;
+			agents[i]->update(steering_force, dtime, event);
+			steering_force = agents[i]->Behavior()->Seek(agents[i], target, dtime) * 0.5f;
+			agents[i]->update(steering_force, dtime, event);
+		}
+		else {
+			agents[i]->update(steering_force, dtime, event);
+		}
+
 	}
 
 
@@ -71,6 +78,7 @@ void FlockingScene::draw() {
 			draw_circle(TheApp::Instance()->getRenderer(), (int)agents[i]->getPosition().x, (int)agents[i]->getPosition().y, 200, 50, 50, 50, 255);
 		agents[i]->draw();
 	}
+	draw_circle(TheApp::Instance()->getRenderer(), (int)target.x, (int)target.y, 15, 255, 0, 0, 255);
 	text->Draw();
 }
 

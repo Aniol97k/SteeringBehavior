@@ -4,7 +4,7 @@ using namespace std;
 
 PursueScene::PursueScene() {
 	Agent *agent = new Agent;
-	agent->setPosition(Vector2D(640, 360));
+	agent->setPosition(Vector2D(240, 600));
 	agent->setTarget(Vector2D(1000, 30));
 	agent->loadSpriteTexture("../res/soldier.png", 4);
 	agents.push_back(agent);
@@ -47,7 +47,7 @@ void PursueScene::update(float dtime, SDL_Event *event) {
 	Vector2D steering_force = agents[0]->Behavior()->Seek(agents[0], agents[0]->getTarget(), dtime);
 	agents[0]->update(steering_force, dtime, event);
 
-	Vector2D steering_force_enemy = agents[1]->Behavior()->Pursue(agents[1], agents[0], dtime, &predictedTarget);
+	Vector2D steering_force_enemy = agents[1]->Behavior()->Pursue(agents[1], agents[0]->getPosition(), agents[0]->getVelocity(), dtime, &predictedTarget);
 	agents[1]->update(steering_force_enemy, dtime, event);
 }
 
