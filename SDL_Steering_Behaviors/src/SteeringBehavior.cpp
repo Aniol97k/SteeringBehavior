@@ -381,7 +381,7 @@ Vector2D SteeringBehavior::CollisionAvoidance(Agent *agent, Agent *target, float
 }
 
 
-//Obstacle Avoidance
+//Obstacle Avoidance.
 Vector2D SteeringBehavior::ObstacleAvoidance(Agent *agent, Vector2D target, float dtime) {
 	Vector2D desiredVelocity = target - agent->getPosition();
 	desiredVelocity = desiredVelocity.Normalize();
