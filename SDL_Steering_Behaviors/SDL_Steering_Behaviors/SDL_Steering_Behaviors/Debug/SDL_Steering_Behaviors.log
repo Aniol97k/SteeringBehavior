@@ -1,5 +1,10 @@
-﻿  main.cpp
-  SteeringBehavior.cpp
+﻿  SteeringBehavior.cpp
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(55): error C2535: 'Vector2D SteeringBehavior::Flocking(std::vector<Agent *,std::allocator<_Ty>>,float,int)': member function already defined or declared
+          with
+          [
+              _Ty=Agent *
+          ]
+  c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(54): note: see declaration of 'SteeringBehavior::Flocking'
 c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.cpp(216): warning C4018: '<': signed/unsigned mismatch
 c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.cpp(277): warning C4305: 'initializing': truncation from 'double' to 'float'
 c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.cpp(278): warning C4305: 'initializing': truncation from 'double' to 'float'
@@ -7,7 +12,19 @@ c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\stee
 c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.cpp(310): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.cpp(311): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.cpp(312): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.cpp(323): error C2084: function 'Vector2D SteeringBehavior::Flocking(std::vector<Agent *,std::allocator<_Ty>>,float,int)' already has a body
+          with
+          [
+              _Ty=Agent *
+          ]
+  c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.cpp(274): note: see previous definition of 'Flocking'
   PathFollowingScene.cpp
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(55): error C2535: 'Vector2D SteeringBehavior::Flocking(std::vector<Agent *,std::allocator<_Ty>>,float,int)': member function already defined or declared
+          with
+          [
+              _Ty=Agent *
+          ]
+  c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(54): note: see declaration of 'SteeringBehavior::Flocking'
 c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\pathfollowingscene.cpp(31): error C2065: 'path': undeclared identifier
 c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\pathfollowingscene.cpp(31): error C2228: left of '.emplace' must have class/struct/union
   c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\pathfollowingscene.cpp(31): note: type is 'unknown-type'
@@ -19,4 +36,138 @@ c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\path
 c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\pathfollowingscene.cpp(49): error C2065: 'path': undeclared identifier
 c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\pathfollowingscene.cpp(49): error C2228: left of '.size' must have class/struct/union
   c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\pathfollowingscene.cpp(49): note: type is 'unknown-type'
+  Generating Code...
+  Compiling...
+  AdvancedPathFollowingScene.cpp
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(55): error C2535: 'Vector2D SteeringBehavior::Flocking(std::vector<Agent *,std::allocator<_Ty>>,float,int)': member function already defined or declared
+          with
+          [
+              _Ty=Agent *
+          ]
+  c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(54): note: see declaration of 'SteeringBehavior::Flocking'
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\advancedpathfollowingscene.cpp(45): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Compiling...
+  Agent.cpp
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(55): error C2535: 'Vector2D SteeringBehavior::Flocking(std::vector<Agent *,std::allocator<_Ty>>,float,int)': member function already defined or declared
+          with
+          [
+              _Ty=Agent *
+          ]
+  c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(54): note: see declaration of 'SteeringBehavior::Flocking'
+  Generating Code...
+  Compiling...
+  ArriveScene.cpp
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(55): error C2535: 'Vector2D SteeringBehavior::Flocking(std::vector<Agent *,std::allocator<_Ty>>,float,int)': member function already defined or declared
+          with
+          [
+              _Ty=Agent *
+          ]
+  c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(54): note: see declaration of 'SteeringBehavior::Flocking'
+  Generating Code...
+  Compiling...
+  CollisionAvoidanceScene.cpp
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(55): error C2535: 'Vector2D SteeringBehavior::Flocking(std::vector<Agent *,std::allocator<_Ty>>,float,int)': member function already defined or declared
+          with
+          [
+              _Ty=Agent *
+          ]
+  c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(54): note: see declaration of 'SteeringBehavior::Flocking'
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\collisionavoidancescene.cpp(45): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Compiling...
+  FleeScene.cpp
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(55): error C2535: 'Vector2D SteeringBehavior::Flocking(std::vector<Agent *,std::allocator<_Ty>>,float,int)': member function already defined or declared
+          with
+          [
+              _Ty=Agent *
+          ]
+  c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(54): note: see declaration of 'SteeringBehavior::Flocking'
+  Generating Code...
+  Compiling...
+  FlockingScene.cpp
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(55): error C2535: 'Vector2D SteeringBehavior::Flocking(std::vector<Agent *,std::allocator<_Ty>>,float,int)': member function already defined or declared
+          with
+          [
+              _Ty=Agent *
+          ]
+  c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(54): note: see declaration of 'SteeringBehavior::Flocking'
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\flockingscene.cpp(39): warning C4018: '<': signed/unsigned mismatch
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\flockingscene.cpp(47): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Compiling...
+  ObstacleAvoidanceScene.cpp
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(55): error C2535: 'Vector2D SteeringBehavior::Flocking(std::vector<Agent *,std::allocator<_Ty>>,float,int)': member function already defined or declared
+          with
+          [
+              _Ty=Agent *
+          ]
+  c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(54): note: see declaration of 'SteeringBehavior::Flocking'
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\obstacleavoidancescene.cpp(45): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Compiling...
+  PerimeterAvoidanceScene.cpp
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(55): error C2535: 'Vector2D SteeringBehavior::Flocking(std::vector<Agent *,std::allocator<_Ty>>,float,int)': member function already defined or declared
+          with
+          [
+              _Ty=Agent *
+          ]
+  c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(54): note: see declaration of 'SteeringBehavior::Flocking'
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\perimeteravoidancescene.cpp(45): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Compiling...
+  PursueScene.cpp
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(55): error C2535: 'Vector2D SteeringBehavior::Flocking(std::vector<Agent *,std::allocator<_Ty>>,float,int)': member function already defined or declared
+          with
+          [
+              _Ty=Agent *
+          ]
+  c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(54): note: see declaration of 'SteeringBehavior::Flocking'
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\pursuescene.cpp(15): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+  Compiling...
+  SceneKinematicFlee.cpp
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(55): error C2535: 'Vector2D SteeringBehavior::Flocking(std::vector<Agent *,std::allocator<_Ty>>,float,int)': member function already defined or declared
+          with
+          [
+              _Ty=Agent *
+          ]
+  c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(54): note: see declaration of 'SteeringBehavior::Flocking'
+  Generating Code...
+  Compiling...
+  SceneKinematicSeek .cpp
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(55): error C2535: 'Vector2D SteeringBehavior::Flocking(std::vector<Agent *,std::allocator<_Ty>>,float,int)': member function already defined or declared
+          with
+          [
+              _Ty=Agent *
+          ]
+  c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(54): note: see declaration of 'SteeringBehavior::Flocking'
+  Generating Code...
+  Compiling...
+  SeekScene.cpp
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(55): error C2535: 'Vector2D SteeringBehavior::Flocking(std::vector<Agent *,std::allocator<_Ty>>,float,int)': member function already defined or declared
+          with
+          [
+              _Ty=Agent *
+          ]
+  c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(54): note: see declaration of 'SteeringBehavior::Flocking'
+  Generating Code...
+  Compiling...
+  WanderScene.cpp
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(55): error C2535: 'Vector2D SteeringBehavior::Flocking(std::vector<Agent *,std::allocator<_Ty>>,float,int)': member function already defined or declared
+          with
+          [
+              _Ty=Agent *
+          ]
+  c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(54): note: see declaration of 'SteeringBehavior::Flocking'
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\wanderscene.cpp(48): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+  Compiling...
+  main.cpp
+c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(55): error C2535: 'Vector2D SteeringBehavior::Flocking(std::vector<Agent *,std::allocator<_Ty>>,float,int)': member function already defined or declared
+          with
+          [
+              _Ty=Agent *
+          ]
+  c:\users\aniol\desktop\projects\steeringbehavior\sdl_steering_behaviors\src\steeringbehavior.h(54): note: see declaration of 'SteeringBehavior::Flocking'
   Generating Code...

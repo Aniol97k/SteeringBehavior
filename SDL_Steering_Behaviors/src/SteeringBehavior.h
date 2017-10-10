@@ -52,4 +52,14 @@ public:
 	Vector2D AdvancedPathFollowing(Agent *agent, Agent *target, float dtime, std::vector<Vector2D>* path);
 
 	Vector2D Flocking(std::vector <Agent*> agents, float dtime, int agentIndex);
+	Vector2D Flocking(std::vector <Agent*> agents, float dtime, int agentIndex);
+
+	Vector2D PerimeterAvoidance(Agent *agent, Vector2D target, float dtime, Vector2D perimeterBorder, Vector2D perimeterSize);
+	Vector2D PerimeterAvoidance(Agent *agent, Agent *target, float dtime, Vector2D perimeterBorder, Vector2D perimeterSize);
+
+	Vector2D ObstacleAvoidance(Agent *agent, Vector2D target, float dtime);
+	Vector2D ObstacleAvoidance(Agent *agent, Agent *target, float dtime);
+
+	Vector2D CollisionAvoidance(Agent *agent, Vector2D target, float dtime);
+	Vector2D CollisionAvoidance(Agent *agent, Agent *target, float dtime);
 };
