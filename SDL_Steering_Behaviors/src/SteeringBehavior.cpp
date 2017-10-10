@@ -319,41 +319,40 @@ Vector2D SteeringBehavior::Flocking(std::vector <Agent*> agents, float dtime, in
 	return flockingForce = separationDirection * SEPARATION_K + cohesionDirection * COHESION_K + alignmentDirection * ALIGNMENT_K;
 }
 
-
-Vector2D SteeringBehavior::Flocking(std::vector <Agent*> agents, float dtime, int agentIndex){
-	return Flocking(agents, dtime, agentIndex);
-}
-
 //Perimeter Avoidance
-Vector2D SteeringBehavior::PerimeterAvoidance(Agent *agent, Vector2D target, float dtime, Vector2D perimeterBorder, Vector2D perimeterSize) {
-	Vector2D desiredVelocity = target - agent->getPosition();
+Vector2D SteeringBehavior::PerimeterAvoidance(Agent *agent, Vector2D target, float dtime, Vector2D perimeterBorder) {
+	bool perimeterAvoided = false;
+	Vector2D desiredVelocity = agent->getVelocity();
 	desiredVelocity = desiredVelocity.Normalize();
 	desiredVelocity *= agent->max_velocity;
 
-	Vector2D steeringForce = desiredVelocity - agent->getVelocity();
-	
-	if (agent->position.x < perimeterBorder.x) { desiredVelocity.x = agent->max_velocity; }
-	else if (agent->position.x > perimeterSize.x - perimeterBorder.x) { desiredVelocity.x = agent->max_velocity;}
+	Vector2D perimeterSize(TheApp::Instance()->getWinSize());
 
-	if (agent->position.y < perimeterBorder.y) { desiredVelocity.y = agent->max_velocity; }
-	else if (agent->position.y > perimeterSize.y - perimeterBorder.y) { desiredVelocity.y = agent->max_velocity; }
+	Vector2D steeringForce(0, 0);
+	
+	if (agent->position.x < perimeterBorder.x) { desiredVelocity.x = agent->max_velocity; perimeterAvoided = true;}
+	else if (agent->position.x > perimeterSize.x - perimeterBorder.x) { desiredVelocity.x = -agent->max_velocity; perimeterAvoided = true;}
+
+	if (agent->position.y < perimeterBorder.y) { desiredVelocity.y = agent->max_velocity; perimeterAvoided = true;}
+	else if (agent->position.y > perimeterSize.y - perimeterBorder.y) { desiredVelocity.y = -agent->max_velocity;  perimeterAvoided = true;}
 
 	if (desiredVelocity.Length() > 0.0f) {
 		steeringForce = desiredVelocity - agent->velocity;
 		steeringForce /= agent->max_velocity;
 		steeringForce *= agent->max_force;
 	}
-
-	return steeringForce;
+	if (perimeterAvoided)
+		return steeringForce * 0.5f;
+	return Vector2D(0, 0);
 }
 
-Vector2D SteeringBehavior::PerimeterAvoidance(Agent *agent, Agent *target, float dtime, Vector2D perimeterBorder, Vector2D perimeterSize) {
-	return PerimeterAvoidance(agent, target->position, dtime, perimeterBorder, perimeterSize);
+Vector2D SteeringBehavior::PerimeterAvoidance(Agent *agent, Agent *target, float dtime, Vector2D perimeterSize) {
+	return PerimeterAvoidance(agent, target->position, dtime, perimeterSize);
 }
 
 //Collision Avoidance
 Vector2D SteeringBehavior::CollisionAvoidance(Agent *agent, Vector2D target, float dtime) {
-	Vector2D desiredVelocity = target - agent->getPosition();
+	/*Vector2D desiredVelocity = target - agent->getPosition();
 	desiredVelocity = desiredVelocity.Normalize();
 	desiredVelocity *= agent->max_velocity;
 
@@ -373,7 +372,8 @@ Vector2D SteeringBehavior::CollisionAvoidance(Agent *agent, Vector2D target, flo
 	}
 
 	if (collision == true) { Flee(nearestTarget->position); }
-	return steeringForce;
+	return steeringForce;*/
+	return Vector2D(0, 0);
 }
 
 Vector2D SteeringBehavior::CollisionAvoidance(Agent *agent, Agent *target, float dtime) {
@@ -383,7 +383,7 @@ Vector2D SteeringBehavior::CollisionAvoidance(Agent *agent, Agent *target, float
 
 //Obstacle Avoidance.
 Vector2D SteeringBehavior::ObstacleAvoidance(Agent *agent, Vector2D target, float dtime) {
-	Vector2D desiredVelocity = target - agent->getPosition();
+	/*Vector2D desiredVelocity = target - agent->getPosition();
 	desiredVelocity = desiredVelocity.Normalize();
 	desiredVelocity *= agent->max_velocity;
 
@@ -408,7 +408,8 @@ Vector2D SteeringBehavior::ObstacleAvoidance(Agent *agent, Vector2D target, floa
 	}
 
 
-	return steeringForce;
+	return steeringForce;*/
+	return Vector2D(0, 0);
 }
 
 Vector2D SteeringBehavior::ObstacleAvoidance(Agent *agent, Agent *target, float dtime) {

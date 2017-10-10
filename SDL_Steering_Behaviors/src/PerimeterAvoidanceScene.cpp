@@ -34,20 +34,19 @@ void PerimeterAvoidanceScene::update(float dtime, SDL_Event *event) {
 	default:
 		break;
 	}
-	Vector2D steering_force = agents[0]->Behavior()->AdvancedPathFollowing(agents[0], agents[0]->getTarget(), dtime, &path);
+	Vector2D steering_force = agents[0]->Behavior()->PerimeterAvoidance(agents[0], agents[0]->getTarget(), dtime, Vector2D(100, 100));
+	Vector2D wanderForce = agents[0]->Behavior()->Wander(agents[0], agents[0]->getTarget(), dtime, 180.f, 200.f, 75.f, &circleCenter, &newTarget);;
+	if(steering_force.Length() <= 0.f)
+		steering_force = wanderForce;
 	agents[0]->update(steering_force, dtime, event);
+
 }
 
 void PerimeterAvoidanceScene::draw() {
 
-	Line line;
-	line.setOrigin(agents[0]->getPosition());
-	for (int i = 0; i < path.size(); i++) {
-		line.setDestiny(path[i]);
-		line.drawLine();
-		draw_circle(TheApp::Instance()->getRenderer(), (int)path[i].x, (int)path[i].y, 10, 255, 0, 0, 255);
-		line.setOrigin(path[i]);
-	}
+	draw_circle(TheApp::Instance()->getRenderer(), (int)newTarget.x, (int)newTarget.y, 15, 255, 0, 0, 255);
+	draw_circle(TheApp::Instance()->getRenderer(), (int)circleCenter.x, (int)circleCenter.y, 3, 255, 0, 0, 255);
+	draw_circle(TheApp::Instance()->getRenderer(), (int)circleCenter.x, (int)circleCenter.y, 75.f, 30, 150, 190, 255);
 	agents[0]->draw();
 	text->Draw();
 }

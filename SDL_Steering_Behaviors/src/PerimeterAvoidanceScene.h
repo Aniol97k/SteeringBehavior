@@ -20,4 +20,5 @@ private:
 	std::vector<Agent*> agents;
 	Image* text;
 	Vector2D target;
+	Vector2D circleCenter, newTarget;
 };

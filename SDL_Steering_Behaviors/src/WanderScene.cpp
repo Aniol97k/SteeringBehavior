@@ -51,7 +51,7 @@ void WanderScene::draw() {
 }
 
 const char* WanderScene::getTitle() {
-	return "SDL Steering Behaviors :: Seek Demo";
+	return "SDL Steering Behaviors :: Wander Demo";
 }
 
 

@@ -14,6 +14,7 @@ public:
 	void draw();
 	const char* getTitle();
 private:
+	std::queue<Vector2D> path;
 	std::vector<Agent*> agents;
 	Image* text;
 	Vector2D target;
