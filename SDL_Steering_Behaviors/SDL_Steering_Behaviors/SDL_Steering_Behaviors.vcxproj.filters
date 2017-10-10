@@ -75,6 +75,15 @@
     <ClCompile Include="..\src\FlockingScene.cpp">
       <Filter>Scenes\Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\CollisionAvoidanceScene.cpp">
+      <Filter>Scenes\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ObstacleAvoidanceScene.cpp">
+      <Filter>Scenes\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\PerimeterAvoidanceScene.cpp">
+      <Filter>Scenes\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\SDL_SimpleApp.h">
@@ -129,6 +138,15 @@
       <Filter>Scenes\Headers</Filter>
     </ClInclude>
     <ClInclude Include="..\src\FlockingScene.h">
+      <Filter>Scenes\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\CollisionAvoidanceScene.h">
+      <Filter>Scenes\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ObstacleAvoidanceScene.h">
+      <Filter>Scenes\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\PerimeterAvoidanceScene.h">
       <Filter>Scenes\Headers</Filter>
     </ClInclude>
   </ItemGroup>

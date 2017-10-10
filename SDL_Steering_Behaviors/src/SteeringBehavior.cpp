@@ -185,12 +185,11 @@ Vector2D SteeringBehavior::PathFollowing(Agent *agent, Vector2D target, float dt
 	return steeringForce;
 }
 
-
-
 Vector2D SteeringBehavior::PathFollowing(Agent *agent, Agent *target, float dtime, std::queue<Vector2D>* path) {
 	return PathFollowing(agent, target->position, dtime, path);
 }
 
+//Advanced Path Following
 Vector2D SteeringBehavior::AdvancedPathFollowing(Agent *agent, Vector2D target, float dtime, std::vector<Vector2D>* path) {
 
 	Vector2D steeringForce(0, 0);
@@ -266,11 +265,12 @@ Vector2D SteeringBehavior::AdvancedPathFollowing(Agent *agent, Vector2D target, 
 }
 
 
-
 Vector2D SteeringBehavior::AdvancedPathFollowing(Agent *agent, Agent *target, float dtime, std::vector<Vector2D>* path) {
 	return AdvancedPathFollowing(agent, target->position, dtime, path);
 }
 
+
+//Flocking behavior
 Vector2D SteeringBehavior::Flocking(std::vector <Agent*> agents, float dtime, int agentIndex) {
 	//Constants used in the function
 	float SEPARATION_K = 0.5;

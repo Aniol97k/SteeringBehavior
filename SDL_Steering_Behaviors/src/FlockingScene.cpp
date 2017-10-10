@@ -53,5 +53,5 @@ void FlockingScene::draw() {
 }
 
 const char* FlockingScene::getTitle() {
-	return "SDL Steering Behaviors :: Arrive Demo";
+	return "SDL Steering Behaviors :: Flocking Demo";
 }

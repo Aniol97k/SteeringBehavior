@@ -1,18 +1,21 @@
 #pragma once
+
 #include <vector>
 #include "Scene.h"
 #include "Agent.h"
 #include "Image.h"
+#include <vector>
 
-class PathFollowingScene :
+class CollisionAvoidanceScene :
 	public Scene
 {
 public:
-	PathFollowingScene();
-	~PathFollowingScene();
+	CollisionAvoidanceScene();
+	~CollisionAvoidanceScene();
 	void update(float dtime, SDL_Event *event);
 	void draw();
 	const char* getTitle();
+	std::vector<Vector2D> path;
 private:
 	std::vector<Agent*> agents;
 	Image* text;

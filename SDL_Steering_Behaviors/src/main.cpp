@@ -12,6 +12,9 @@
 #include "PathFollowingScene.h"
 #include "SceneKinematicFlee.h"
 #include "AdvancedPathFollowingScene.h"
+#include "PerimeterAvoidanceScene.h"
+#include "CollisionAvoidanceScene.h"
+#include "ObstacleAvoidanceScene.h"
 
 
 using namespace std; 
@@ -35,7 +38,8 @@ int main(int argc, char ** argv)
 		switch (event.type){
 
 			case SDL_KEYDOWN:
-				if (event.key.keysym.scancode == SDL_SCANCODE_8){
+				
+				/*if (event.key.keysym.scancode == SDL_SCANCODE_8){
 					delete(curr_scene);
 					curr_scene = new SceneKinematicSeek;
 					app->setWindowTitle(curr_scene->getTitle());
@@ -45,7 +49,7 @@ int main(int argc, char ** argv)
 					delete(curr_scene);
 					curr_scene = new SceneKinematicFlee;
 					app->setWindowTitle(curr_scene->getTitle());
-				}
+				}*/
 
 				if (event.key.keysym.scancode == SDL_SCANCODE_1){
 					delete(curr_scene);
@@ -86,6 +90,24 @@ int main(int argc, char ** argv)
 				if (event.key.keysym.scancode == SDL_SCANCODE_7) {
 					delete(curr_scene);
 					curr_scene = new AdvancedPathFollowingScene;
+					app->setWindowTitle(curr_scene->getTitle());
+				}
+
+				if (event.key.keysym.scancode == SDL_SCANCODE_8) {
+					delete(curr_scene);
+					curr_scene = new PerimeterAvoidanceScene;;
+					app->setWindowTitle(curr_scene->getTitle());
+				}
+
+				if (event.key.keysym.scancode == SDL_SCANCODE_9) {
+					delete(curr_scene);
+					curr_scene = new CollisionAvoidanceScene;
+					app->setWindowTitle(curr_scene->getTitle());
+				}
+
+				if (event.key.keysym.scancode == SDL_SCANCODE_0) {
+					delete(curr_scene);
+					curr_scene = new ObstacleAvoidanceScene;
 					app->setWindowTitle(curr_scene->getTitle());
 				}
 
